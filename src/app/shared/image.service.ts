@@ -37,6 +37,7 @@ export class ImageService {
                 this.imagesCollection = this.afs.doc(`images/${user.uid}`)
                     .collection('album', ref => ref.orderBy('createdAt', 'desc'));
 
+                // FUENTE: https://www.youtube.com/watch?v=cwqeyOFcaoA
                 this.images = this.imagesCollection.snapshotChanges().map(changes => {
                     return changes.map(a => {
                         // if(!a.payload.doc.exists) return ;
