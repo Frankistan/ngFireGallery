@@ -1,0 +1,60 @@
+<div fxLayoutAlign="center">
+    <div *ngIf="auth.socialLogin|async; then social else email">
+        <!-- template will replace this div -->
+    </div>
+    <ng-template #email>
+        <mat-card fxLayout="column" fxFlex="100" fxFlex.sm="80" fxFlex.gt-sm="40" *ngIf="auth.user | async; let user;">
+            <mat-card-header>
+                <div mat-card-avatar class="card-header-image" [ngStyle]="{'background-image': 'url(' + user.photoURL + ')'}"></div>
+                <mat-card-title>{{ user.displayName }}</mat-card-title>
+                <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+            </mat-card-header>
+            <form autocomplete="off" novalidate [formGroup]="profileForm" (submit)="updateProfile()">
+                <mat-card-content style="margin-top: 2em">
+                    <mat-input-container class="full-width-input">
+                        <input matInput [placeholder]="'auth.input.name' | translate" name="name" formControlName="name">
+                        <mat-error>
+                            {{ 'validation.required' | translate }}
+                        </mat-error>
+                        <mat-error *ngIf="profileForm.get('name').hasError('minlength') && profileForm.get('name').touched">
+                            {{ 'validation.minlength' | translate }}
+                        </mat-error>
+                    </mat-input-container>
+                    <mat-input-container class="full-width-input">
+                        <input matInput [placeholder]="'auth.input.email' | translate" name="email" formControlName="email">
+                    </mat-input-container>
+                    <button type="button" (click)="togglePasswordFields()" style="width:100%" mat-button>{{ 'profile.b.change_password' | translate }}</button>
+
+                    <mat-input-container class="full-width-input" *ngIf="showFields">
+                        <input matInput [placeholder]="'profile.input.new_password' | translate" name="password" formControlName="password" [type]="hide ? 'password' : 'text'" />
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                        <mat-error *ngIf="profileForm.get('password').hasError('minlength')">
+                            {{ 'validation.minlength' | translate }}
+                        </mat-error>
+                    </mat-input-container>
+                    <mat-input-container class="full-width-input" *ngIf="showFields">
+                        <input matInput [placeholder]="'profile.input.new_password_confirm' | translate" name="password_confirm" formControlName="password_confirm" [type]="hide ? 'password' : 'text'" />
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                        <mat-error *ngIf="profileForm.get('password_confirm').hasError('MatchPassword')">
+                            {{ 'validation.pwd_match' | translate }}
+                        </mat-error>
+                    </mat-input-container>
+                    <mat-input-container class="full-width-input">
+                        <input matInput [placeholder]="'auth.input.img_url' | translate" name="photoURL" formControlName="photoURL" #imageURL>
+                    </mat-input-container>
+                    <img *ngIf="imageURL.value" mat-card-image [src]="imageURL.value" style="max-height: 300px; max-width:300px;display: flex;margin: 0 auto;">
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button type="submit" color="primary" mat-raised-button [disabled]="!profileForm.valid">
+                    {{ 'profile.b.save_changes' | translate }}
+                </button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </ng-template>
+    <ng-template #social>
+        <h5>Social login</h5>
+    </ng-template>
+
+
+</div>

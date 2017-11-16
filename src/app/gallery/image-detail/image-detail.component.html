@@ -1,0 +1,25 @@
+<div fxLayoutAlign="center">
+    <mat-card fxLayout="column" fxFlex="100" fxFlex.sm="65" fxFlex.gt-sm="40" *ngIf="image$ | async; let image;">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ image.name }}</mat-card-title>
+            <mat-card-subtitle>
+                <time>
+                    {{ image.createdAt | amDateFormat: 'YYYY-MM-DD HH:mm' }}
+                   ( {{ image.createdAt | amLocale: 'es' | amTimeAgo }} )
+                </time>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="image.url" alt="image">
+
+        <mat-card-actions align="end">
+            <button mat-button (click)="toogleFav(image)">
+                <mat-icon [class.red-color]="image.liked == true">{{ image.liked ? 'favorite' : 'favorite_border'}}</mat-icon>
+                {{ 'image.favorite' | translate }}
+            </button>
+            <button mat-button (click)="openDeleteDialog(image)">
+                <mat-icon>delete</mat-icon>{{ 'image.delete' | translate }}
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

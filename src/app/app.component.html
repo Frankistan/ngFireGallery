@@ -1,0 +1,64 @@
+<mat-toolbar [color]="(toolbarSrv.isSearching|async) ? '': 'primary'">
+
+    <button mat-icon-button (click)="sidenav.toggle()" *ngIf="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <a *ngIf="!(toolbarSrv.isSearching|async)" class="main-toolbar-title" routerLink="/">
+        {{ title|async|translate }}
+    </a>
+    <!-- <span style="flex: 1 1 auto;"></span> -->
+    <span fxFlex></span>
+
+    <div fxFlexLayout="row" fxFlex="100">
+        <app-search></app-search>
+    </div>
+
+    <ng-template [ngIf]="!(auth.isAuthenticated | async)">
+        <button mat-icon-button [matMenuTriggerFor]="langMenu">
+            <mat-icon>language</mat-icon>
+        </button>
+        <mat-menu #langMenu="matMenu">
+            <button mat-menu-item (click)="switchLanguage('es')"> Español </button>
+            <button mat-menu-item (click)="switchLanguage('en')"> English </button>
+        </mat-menu>
+
+        <a fxHide.xs="true" mat-button (click)="sidenav.close()" routerLinkActive="active" routerLink="/login">
+            {{ 'main.sidenav.login' | translate }}
+        </a>
+        <button routerLink="/login" fxHide.gt-xs="true" mat-icon-button>
+            <mat-icon aria-label="iniciar sesion">account_circle</mat-icon>
+        </button>
+    </ng-template>
+
+    <button *ngIf="displaySearchBtn && !(toolbarSrv.isSearching|async)" mat-icon-button (click)="openSearch()">
+        <mat-icon>search</mat-icon>
+    </button>
+
+    <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #appMenu="matMenu">
+            <a fxHide.gt-xs="true" mat-menu-item (click)="sidenav.close()" routerLink="/images">
+                <span>{{ 'main.sidenav.gallery' | translate }}</span>
+            </a>
+            <button mat-menu-item (click)="auth.logout();sidenav.close()"> {{ 'main.sidenav.logout' | translate }} </button>
+        </mat-menu>
+    </ng-template>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" fullscreen>
+        <app-profile-info (click)="sidenav.close()"></app-profile-info>
+        <app-sidenav-list (click)="sidenav.close()"></app-sidenav-list>
+    </mat-sidenav>
+
+    <!-- <div class="container" fxLayoutAlign="center">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div> -->
+    <!-- USAR ESTO SI EN LA ANIMACION DE CAMBIO DE PAGINAS DA ERROR O ANIMA DE FORMA EXTRAÑA -->
+
+    <div class="container">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+</mat-sidenav-container>

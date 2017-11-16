@@ -1,0 +1,192 @@
+{
+    "validation": {
+        "email": "Email no válido",
+        "maxlength": "Demasiado largo",
+        "minlength": "Demasiado corto",
+        "pwd_match": "Las contraseñas no coinciden",
+        "required": "Campo obligatorio"
+    },
+    "title": {
+        "app": "NgGallery",
+        "detail": "Imagen",
+        "favorites": "Favoritas",
+        "gallery": "Galería",
+        "home": "Inicio",
+        "login": "Inicia Sesión",
+        "profile": "Tu Perfil",
+        "settings": "Ajustes",
+        "signup": "Regístrate",
+        "upload": "Subir imagen",
+        "reset_password": "Resetear Contraseña"
+    },
+    "toast": {
+        "image": {
+            "created": "Imagen subida correctamente!",
+            "liked": "Añadida a tus favoritas",
+            "not_liked": "Elimada de tus favoritas",
+            "deleted": "Imagen borrada"
+        },
+        "logged_in": "Ya estás logueado",
+        "close": "CERRAR",
+        "profile": "Tu perfil ha sido actualizado",
+        "reset_pwd": "Email enviado, revisa tu correo",
+        "signup": "Registrado correctamente, iniciando sesión",
+        "serverResponse": {
+            "auth/wrong-password": "La contraseña no es válida o el usuario no existe",
+            "auth/weak-password": "La contraseña debe ser de al menos 6 caracteres",
+            "auth/email-already-in-use": "El email ya lo usa otro usuario.",
+            "auth/requires-recent-login": "Esta operación es sensible y requiere que te re-autentiques. Inicia sesión nuevamente",
+            "auth/user-not-found": "Las credenciales no corresponde a ningún usuario. El usuario no existe o fue eliminado.",
+            "invalid_credentials": "Usuario y/o Contraseña Incorrectas",
+            "could_not_create_token": "No se puede iniciar sesión ahora, inténtalo mas tarde",
+            "user_not_found": "Usuario no existe, por favor, regístrate",
+            "default": "Error en el Servidor, si el problema persiste contacte con el servicio de NgGallery",
+            "not_authorized": "Acceso no autorizado!",
+            "reset_pwd_token": "Este token de recuperación de contraseña es inválido.",
+            "reset_pwd_user": "No podemos encontrar a un usuario con ese correo electrónico.",
+            "reset_pwd_ok": "Contraseña reestablecida!",
+            "wrong_captcha": "Captcha incorrecto",
+            "email_exists": "El Email ya está en uso",
+            "error_updating_profile": "Error al actualizar tu perfil",
+            "access_denied": "Acceso denegado"
+        },
+        "auth": {
+            "login": "Has iniciado sesión con éxito!",
+            "social_login": "Has iniciado sesión correctamente con ",
+            "pwd_sent": "¡Recordatorio de contraseña enviado!",
+            "pwd_user": "No podemos encontrar a un usuario con ese correo electrónico",
+            "access_denied": "Acceso denegado",
+            "email_confirmed": "Your email have been verified"
+        }
+    },
+    "dialog": {
+        "delete_image": {
+            "title": "¿Deseas borrar la imagen?",
+            "subtitle": "La imagen se eliminará de forma permanente. Esta acción no se puede deshacer.",
+            "confirm": "Borrar",
+            "cancel": "Cancelar"
+        }
+    },
+    "main": {
+        "search": "Buscar...",
+        "sidenav": {
+            "change_language": "Cambiar idioma",
+            "dashboard": "Escritorio",
+            "favorites": "Favoritas",
+            "gallery": "Galería",
+            "home": "Inicio",
+            "login": "Inicia Sesión",
+            "logout": "Desconexión",
+            "settings": "Ajustes",
+            "signup": "Regístrate",
+            "upload": "Subir imágenes"
+        },
+        "toolbar": {
+            "gallery_button": "Galería",
+            "logIn_button": "Inicia Sesión",
+            "signUp_button": "Regístrate",
+            "sort": {
+                "by_title": "Por Titulo",
+                "by_id": "Por ID",
+                "by_date": "Por Fecha"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "button": "Entrar",
+            "forgotten_pwd": "Contraseña olvidada",
+            "register": "¿No tienes cuenta?",
+            "title": "Hola Invitado, por favor, inicia sesión"
+        },
+        "input": {
+            "email": "Correo electrónico",
+            "img_url": "URL de imagen",
+            "name": "Nombre",
+            "password_confirm": "Confirma contraseña",
+            "password": "Contraseña"
+        },
+        "register": {
+            "button": "Unirme"
+        },
+        "t": {
+            "signup": "Regístrate",
+            "login": "Inicia Sesión",
+            "forgotPwd": "Recuperar Contraseña",
+            "resetPwd": "Resetear Contraseña"
+        },
+        "b": {
+            "signup": "Enviar",
+            "login": "Entrar",
+            "recovery_password": "Olvidé mi contraseña",
+            "continue": "Continuar"
+        },
+        "switch": "mantenme conectado",
+        "l": {
+            "email": "Correo electrónico",
+            "name": "Nombre",
+            "password": "Contraseña",
+            "password_confirm": "Confirma contraseña"
+        },
+        "reset_pwd": {
+            "title": "Para resetar tu contraseña, introduce el email que usas para entrar en NgGallery.",
+            "button": "Enviar"
+        },
+        "resetPwd": {
+            "title": "Introduce y confirma la nueva contraseña asociada a tu email",
+            "button": "Guardar cambios"
+        }
+    },
+    "image": {
+        "favorite": "favorito",
+        "delete": "borrar",
+        "share": "compartir",
+        "updatedAt": "Actualizada: {{date}}",
+        "createdAt": "Creada: {{date}}"
+    },
+    "upload": {
+        "browse": "Explorar...",
+        "button": "Subir",
+        "label": "selecciona o suelta imágenes aquí",
+        "progress": "Progreso: {{progress}} % Completado"
+    },
+    "notes": {
+        "t": {
+            "edit": "Editar nota",
+            "create": "Crear nota"
+        },
+        "b": {
+            "edit": "Editar",
+            "create": "Guardar",
+            "list_delete": "Borrar",
+            "list_edit": "Editar"
+        },
+        "l": {
+            "title": "Título",
+            "content": "Contenido"
+        }
+    },
+    "empty_images": {
+        "title": "Oops, No hay imágenes en esta galería!",
+        "subtitle": "Pulsa el botón de la esquina inferior para subir alguna"
+    },
+    "profile": {
+        "t": {
+            "profile": "Perfil"
+        },
+        "input": {
+            "new_password": "Nueva contraseña",
+            "new_password_confirm": "Confirma nueva contraseña"
+        },
+        "b": {
+            "save_changes": "Guardar Cambios",
+            "change_password": "Cambiar contraseña"
+        },
+        "l": {
+            "email": "Correo electrónico",
+            "name": "Nombre",
+            "password": "Contraseña",
+            "password_confirm": "Confirma contraseña"
+        }
+    }
+}

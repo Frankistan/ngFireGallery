@@ -1,0 +1,8 @@
+.card-header-image {
+    background-size: cover;
+    height: 6rem;
+    width: 6rem;
+    border: 1px solid grey;
+}
+
+.mat-card-avatar {}

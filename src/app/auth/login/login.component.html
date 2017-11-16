@@ -1,0 +1,80 @@
+<div *ngIf="auth.user | async; then authenticated else guest">
+    <!-- template will replace this div -->
+</div>
+
+<ng-template #guest>
+    <div fxLayoutAlign="center">
+        <mat-card fxLayout="column" fxFlex="100" fxFlex.sm="65" fxFlex.gt-sm="50">
+            <form autocomplete="off" novalidate [formGroup]="loginForm" (submit)="login()">
+                <mat-card-content>
+                    <mat-card-title>
+                        {{ 'auth.login.title' | translate }}
+                    </mat-card-title>
+                    <mat-input-container class="full-width-input">
+                        <input matInput [placeholder]="'auth.input.email' | translate" name="email" formControlName="email">
+                        <mat-error>
+                            {{ 'validation.email' | translate }}
+                        </mat-error>
+                    </mat-input-container>
+
+                    <mat-input-container class="full-width-input">
+                        <input matInput [placeholder]="'auth.input.password' | translate" name="password" formControlName="password" [type]="hide ? 'password' : 'text'" />
+                        <mat-error>
+                            {{ 'validation.required' | translate }}
+                        </mat-error>
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </mat-input-container>
+
+                    <re-captcha [formControlName]="'recaptcha'" [siteKey]="clientKey"></re-captcha>
+                </mat-card-content>
+                <div align="end">
+                    <button type="submit" color="primary" mat-raised-button [disabled]="!loginForm.valid">
+                        {{ 'auth.login.button' | translate }}
+                    </button>
+                </div>
+            </form>
+            <div fxLayout="row" class="additional-links" fxLayoutAlign="space-between center">
+                <button fxFlex="45" routerLink="/signup" mat-button>{{ 'auth.login.register' | translate }}</button>
+                <button fxFlex="45" routerLink="/reset-password" mat-button>{{ 'auth.login.forgotten_pwd' | translate }}</button>
+            </div>
+            <mat-divider></mat-divider>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <button fxFlex="30" mat-raised-button (click)="auth.googleLogin()">
+                    <img src="../../../assets/img/google.png" class="icon-img" alt="google" />
+                    <span fxHide.lt-md="true">Google</span>
+                </button>
+                <button fxFlex="30" mat-raised-button (click)="auth.facebookLogin()">
+                    <img src="../../../assets/img/facebook.png" class="icon-img" alt="facebook" />
+                    <span fxHide.lt-md="true">Facebook</span>
+                </button>
+                <button fxFlex="30" mat-raised-button (click)="auth.githubLogin()">
+                    <img src="../../../assets/img/github.png" class="icon-img" alt="github" />
+                    <span fxHide.lt-md="true">Github</span>
+                </button>
+            </div>
+        </mat-card>
+    </div>
+</ng-template>
+
+<ng-template #authenticated>
+    <div *ngIf="auth.user | async as user">
+        <div fxLayoutAlign="center">
+            <mat-card fxLayout="column" fxFlex="100" fxFlex.sm="65" fxFlex.gt-sm="40">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>Hola {{ user.displayName }} , bienvenido!</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image [src]="user.photoURL" alt="profile image">
+                <mat-card-content>
+                    <p>
+                        {{ user.email }}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <p>UID: {{ user.uid }}</p>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</ng-template>

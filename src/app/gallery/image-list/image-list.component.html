@@ -1,0 +1,36 @@
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
+
+<mat-grid-list [cols]="cols" [rowHeight]="rowHeight" gutterSize="4px" [ngStyle]="{'display': display}">
+    <mat-grid-tile *ngFor="let image of images|async| filterBy: search">
+        <a [routerLink]="['/images', image.id]">
+            <mat-card>
+                <mat-card-header>
+                    <div mat-card-avatar></div>
+                    <mat-card-title>{{ image.name }}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image [src]="image.url" alt="image">
+            </mat-card>
+        </a>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template [ngIf]="!totalImages && !showSpinner">
+    <div fxLayoutAlign="center">
+        <mat-card fxLayout="column" fxFlexAlign="center center" fxFlex="100" fxFlex.sm="65" fxFlex.gt-sm="40">
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon class="icon-32">info_outline</mat-icon>
+                </div>
+                <mat-card-title>{{ 'empty_images.title' | translate }}</mat-card-title>
+                <mat-card-subtitle>{{ 'empty_images.subtitle' | translate }}</mat-card-subtitle>
+            </mat-card-header>
+            <div style="margin: 5rem auto 0">
+                <img mat-card-image class="no-image-icon" src="../../../assets/img/broken-file-icon-hi.png" alt="image">
+            </div>
+        </mat-card>
+    </div>
+</ng-template>
+
+<button mat-fab class="md-fab-bottom-right" routerLink="/upload">
+    <mat-icon  aria-label="subir imagen">add</mat-icon>
+</button>

@@ -1,0 +1,193 @@
+{
+    "validation": {
+        "email": "Invalid email address",
+        "maxlength": "Too long",
+        "minlength": "Too short",
+        "pwd_match": "Passwords do not match",
+        "required": "Required field"
+    },
+    "title": {
+        "app": "NgGallery",
+        "detail": "Image",
+        "favorites": "Favorites",
+        "gallery": "Gallery",
+        "home": "Home",
+        "login": "Login",
+        "profile": "Your Profile",
+        "settings": "Settings",
+        "signup": "Sign Up",
+        "upload": "Upload Image",
+        "reset_password": "Reset Password"
+    },
+
+    "toast": {
+        "image": {
+            "created": "Image uploaded correctly!",
+            "liked": "Added to favorites",
+            "not_liked": "Removed from favorites",
+            "deleted": "Image deleted"
+        },
+        "logged_in": "You are already logged in",
+        "close": "CLOSE",
+        "reset_pwd": "Email sent, please check your inbox",
+        "signup": "Registered correctly, now loggining",
+        "profile": "Your Profile has been updated",
+        "serverResponse": {
+            "auth/wrong-password": "The password is invalid or the user does not have a password",
+            "auth/weak-password": "Password should be at least 6 characters",
+            "auth/email-already-in-use": "The email address is already in use by another account.",
+            "auth/requires-recent-login": "This operation is sensitive and requires recent authentication. Log in again before retrying this request",
+            "auth/user-not-found": "There is no user record corresponding to this identifier. The user may have been deleted.",
+            "invalid_credentials": "Incorrect User and/or Password",
+            "could_not_create_token": "Could not init session, retry later",
+            "user_not_found": "User does not exist, please, register",
+            "default": "Internal Server Error, if the problem persist, contact with NgGallery Service",
+            "not_authorized": "Unauthorized Access!",
+            "reset_pwd_token": "This password reset token is invalid.",
+            "reset_pwd_user": "We can't find a user with that e-mail address.",
+            "reset_pwd_ok": "Your password has been reset!",
+            "wrong_captcha": "Wrong Captcha",
+            "email_exists": "Email already taken",
+            "error_updating_profile": "Error updating your profile",
+            "access_denied": "Access denied"
+        },
+        "auth": {
+            "login": "You have successfully signed in",
+            "social_login": "You have successfully signed in with ",
+            "pwd_sent": "We have e-mailed your password reset link!",
+            "pwd_user": "We can't find a user with that e-mail address.",
+            "access_denied": "Access denied",
+            "email_confirmed": "Your email have been verified"
+        }
+    },
+    "dialog": {
+        "delete_image": {
+            "title": "Would you delete this Image?",
+            "subtitle": "This will permanently delete all data. After you delete this, it can't be recovered.",
+            "confirm": "Delete",
+            "cancel": "Cancel"
+        }
+    },
+    "main": {
+        "search": "Search...",
+        "sidenav": {
+            "change_language": "Change language",
+            "dashboard": "Dashboard",
+            "favorites": "Favorites",
+            "gallery": "Gallery",
+            "home": "Home",
+            "login": "Login",
+            "logout": "Logout",
+            "settings": "Settings",
+            "signup": "Sign Up",
+            "upload": "Upload images"
+        },
+        "toolbar": {
+            "gallery_button": "Gallery",
+            "logIn_button": "Login",
+            "signUp_button": "Sign Up",
+            "sort": {
+                "by_title": "By Title",
+                "by_id": "By ID",
+                "by_date": "By Date"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "button": "Login",
+            "forgotten_pwd": "Forgotten password",
+            "register": "Don't have an account?",
+            "title": "Howdy guest, please login"
+        },
+        "input": {
+            "email": "Email",
+            "img_url": "Image URL",
+            "name": "Name",
+            "password_confirm": "Confirm Password",
+            "password": "Password"
+        },
+        "register": {
+            "button": "Join in"
+        },
+        "t": {
+            "signup": "Sign Up",
+            "login": "Login",
+            "forgotPwd": "Forgot password",
+            "resetPwd": "Reset password"
+        },
+        "b": {
+            "signup": "Join in",
+            "login": "Enter",
+            "recovery_password": "Recover my Password",
+            "continue": "Continue"
+        },
+        "switch": "keep me signed in",
+        "l": {
+            "email": "Email",
+            "name": "Name",
+            "password": "Password",
+            "password_confirm": "Repeat Password"
+        },
+        "reset_pwd": {
+            "title": "To reset your password, enter the email address you use to sign in to NgGallery.",
+            "button": "Send"
+        },
+        "resetPwd": {
+            "title": "Enter and confirm the new email's associated password",
+            "button": "Save changes"
+        }
+    },
+    "image": {
+        "favorite": "favorite",
+        "delete": "delete",
+        "share": "share",
+        "updatedAt": "Updated: {{date}}",
+        "createdAt": "Created: {{date}}"
+    },
+    "upload": {
+        "browse": "Browse...",
+        "button": "Upload",
+        "label": "select or drop files here",
+        "progress": "Progress: {{progress}} % Complete"
+    },
+    "notes": {
+        "t": {
+            "edit": "Edit note",
+            "create": "Create note"
+        },
+        "b": {
+            "edit": "Edit",
+            "create": "Save",
+            "list_delete": "Delete",
+            "list_edit": "Edit"
+        },
+        "l": {
+            "title": "Title",
+            "content": "Content"
+        }
+    },
+    "empty_images": {
+        "title": "Oops, there are no images in this gallery!",
+        "subtitle": "Hit the bottom right button to upload some"
+    },
+    "profile": {
+        "t": {
+            "profile": "Profile"
+        },
+        "input": {
+            "new_password": "New password",
+            "new_password_confirm": "Confirm new password"
+        },
+        "b": {
+            "save_changes": "Save changes",
+            "change_password": "Change password"
+        },
+        "l": {
+            "email": "Email",
+            "name": "Name",
+            "password": "Password",
+            "password_confirm": "Confirm Password"
+        }
+    }
+}

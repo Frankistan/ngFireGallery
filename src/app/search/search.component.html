@@ -1,0 +1,7 @@
+<button color="primary" style="align-self: center;" mat-icon-button (click)="closeSearch()">
+    <mat-icon >arrow_back</mat-icon>
+</button>
+<mat-form-field color="primary" fxFlex="100" class="search-form-field" *ngIf="isSearching" floatPlaceholder="never">
+    <input matInput #searchInput appAutofocus [placeholder]="'main.search' | translate " type="text" (keyup)="search($event.target.value)">
+    <mat-icon color="primary" matSuffix (click)="search('');searchInput.value=''">close</mat-icon>
+</mat-form-field>

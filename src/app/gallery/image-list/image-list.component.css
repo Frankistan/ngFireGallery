@@ -1,0 +1,16 @@
+mat-grid-list {
+    margin: 0.5rem;
+}
+
+mat-grid-tile a {
+    text-decoration: none;
+}
+
+.no-image-icon {
+    font-size: 400px;
+    color: lightgray;
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    rotation: -30deg;
+    width: 25vw;
+}

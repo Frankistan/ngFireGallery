@@ -1,0 +1,29 @@
+<div fxLayoutAlign="center">
+    <mat-card fxLayout="column" fxFlex="100" fxFlex.sm="80" fxFlex.gt-sm="40">
+        <mat-card-content>
+            <div fxLayout="row">
+                <mat-form-field fxFlex="100" tdFileDrop (fileDrop)="files = $event" (click)="fileInput.inputElement.click()" (keyup.enter)="fileInput.inputElement.click()" (keyup.delete)="fileInput.clear()" (keyup.backspace)="fileInput.clear()" flex>
+                    <input #fileInput matInput [placeholder]="'upload.label' | translate" value="{{fileInputValue}}" readonly/>
+                </mat-form-field>
+                <button mat-icon-button *ngIf="files" (click)="fileInput.clear()" (keyup.enter)="fileInput.clear()">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+                <div align="end" style="width:100%;">
+                    <td-file-input #fileInput [(ngModel)]="files" multiple [(ngModel)]="files" color="primary" (select)="selectEvent($event)">
+                        <mat-icon>folder</mat-icon>
+                        <span class="text-upper">{{ 'upload.browse' | translate }}</span>
+                    </td-file-input>
+                </div>
+            </div>
+        </mat-card-content>
+        <div align="end" style="margin-bottom:1rem;">
+            <button mat-raised-button color="accent" (click)="pushFiles()" [disabled]="!files">{{ 'upload.button' | translate }}</button>
+        </div>
+        <mat-card-footer class="mat-card-no-margin" *ngIf="files">
+
+            <mat-progress-bar color="primary" mode="determinate" value="{{0 || upload?.progress }}">
+            </mat-progress-bar>
+            <span [translate]="'upload.progress'" [translateParams]="{progress: upload?.progress ? upload?.progress : 0}"></span>
+        </mat-card-footer>
+    </mat-card>
+</div>
