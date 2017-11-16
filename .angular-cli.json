@@ -18,7 +18,8 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
-            "styles.css"
+            "styles.css",
+            "app/themes/theme.scss"
         ],
         "scripts": [
             "../node_modules/moment/min/moment-with-locales.min.js"
