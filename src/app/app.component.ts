@@ -1,8 +1,6 @@
-import { ImageService } from './shared/image.service';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Router} from '@angular/router';
 import { SetTitleOnRouteChangeService } from './shared/set-title-on-route-change.service';
 import { ToolbarService } from './shared/toolbar.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -16,11 +14,9 @@ export class AppComponent implements OnInit {
     title: BehaviorSubject<string> = new BehaviorSubject('title.app');
 
     constructor(
-        private router: Router,
         private setTitleService: SetTitleOnRouteChangeService,
         private translate: TranslateService,
         public auth: AuthService,
-        public imageService:ImageService,
         public toolbarSrv: ToolbarService,
     ) {
 
