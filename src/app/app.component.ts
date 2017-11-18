@@ -40,7 +40,8 @@ export class AppComponent implements OnInit {
     }
 
     switchLanguage(language: string) {
-        this.translate.use(language);
-        localStorage.setItem('NGX_TRANSLATE', language);
+        this.translate.use(language).subscribe(()=>{
+            localStorage.setItem('NGX_TRANSLATE', language);
+        });
     }
 }

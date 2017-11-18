@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-sidenav-list',
-  templateUrl: './sidenav-list.component.html',
-  styleUrls: ['./sidenav-list.component.css']
+    selector: 'app-sidenav-list',
+    templateUrl: './sidenav-list.component.html',
+    styleUrls: ['./sidenav-list.component.css']
 })
-export class SidenavListComponent  {
+export class SidenavListComponent {
 
     constructor(
         public auth: AuthService,
@@ -16,7 +16,11 @@ export class SidenavListComponent  {
         private translate: TranslateService,
     ) { }
 
-  toggleLanguage() {
-      this.translate.currentLang == "es" ? this.translate.use("en") : this.translate.use("es");
-  }
+    toggleLanguage() {
+        let language = this.translate.currentLang == "es" ? "en" : "es";
+
+        this.translate.use(language).subscribe(() => {
+            localStorage.setItem('NGX_TRANSLATE', language);
+        });
+    }
 }
