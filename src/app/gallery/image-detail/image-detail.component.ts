@@ -6,27 +6,41 @@ import { ImageService } from '../../shared/image.service';
 import { MatDialog } from '@angular/material';
 import { SnackbarService } from '../../shared/snackbar.service';
 import { Observable } from 'rxjs/Observable';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import * as moment from 'moment';
+
 
 @Component({
     selector: 'app-image-detail',
     templateUrl: './image-detail.component.html',
     styleUrls: ['./image-detail.component.css']
 })
-export class ImageDetailComponent {
+export class ImageDetailComponent  {
     image$: Observable<Image>;
+
+    // lastUpdated = new Date();
+
     constructor(
         private imageService: ImageService,
         private snackBar: SnackbarService,
         private router: Router,
         private route: ActivatedRoute,
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        public translate: TranslateService,
     ) {
         let id = this.route.snapshot.params['id'];
         this.image$ = this.imageService.read(id);
 
+        moment.locale(translate.currentLang);
+
+        // cambia el idioma de TIMEAGO cuando cambia el idioma de la App
+        // FUNCIONA CON this.lastUpdated = new Date();
+        this.translate.onLangChange.map(event => { return event.lang; }).subscribe((language)=>{
+            moment.locale(language);
+        });
      }
 
-    ngOnInit() {}
+
 
     openDeleteDialog(image): void {
         let dialogRef = this.dialog.open(DeleteImageDialogComponent, {
