@@ -8,6 +8,7 @@ import { SnackbarService } from '../../shared/snackbar.service';
 import { Observable } from 'rxjs/Observable';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import * as moment from 'moment';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class ImageDetailComponent  {
     image$: Observable<Image>;
 
     // lastUpdated = new Date();
+    subscription:Subscription;
 
     constructor(
         private imageService: ImageService,
@@ -35,7 +37,7 @@ export class ImageDetailComponent  {
 
         // cambia el idioma de TIMEAGO cuando cambia el idioma de la App
         // FUNCIONA CON this.lastUpdated = new Date();
-        this.translate.onLangChange.map(event => { return event.lang; }).subscribe((language)=>{
+        this.subscription = this.translate.onLangChange.map(event => { return event.lang; }).subscribe((language)=>{
             moment.locale(language);
         });
      }
@@ -69,7 +71,6 @@ export class ImageDetailComponent  {
     }
 
     deleteImage(image) {
-        // this.subscription = this.imageService.delete(image)
         this.imageService.delete(image)
             .subscribe(
             success => {
@@ -80,9 +81,8 @@ export class ImageDetailComponent  {
             );
     }
 
-    // ngOnDestroy() {
-    //     if (this.subscription)
-    //         this.subscription.unsubscribe();
-    // }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 
 }
