@@ -19,8 +19,7 @@ mat-toolbar {
     height: 100%;
 }
 
-.container mat-card,
-.container mat-grid-list {
+.container mat-card {
     margin-top: 0.5rem;
 }
 

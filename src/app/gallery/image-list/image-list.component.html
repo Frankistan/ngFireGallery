@@ -4,17 +4,15 @@
 
 <mat-grid-list *ngIf="!showSpinner" [cols]="cols" [rowHeight]="rowHeight" gutterSize="4px" [ngStyle]="{'display': display}">
     <mat-grid-tile *ngFor="let image of images | filterBy: search | orderBy: sortBy: order">
-        <ng-template [ngIf]="!showSpinner">
-            <a [routerLink]="['/images', image.id]">
-                <mat-card>
-                    <mat-card-header>
-                        <div mat-card-avatar></div>
-                        <mat-card-title>{{ image.name }}</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image [src]="image.url" alt="image">
-                </mat-card>
-            </a>
-        </ng-template>
+        <a [routerLink]="['/images', image.id]">
+            <mat-card class="image-list-card">
+                <mat-card-header>
+                    <div mat-card-avatar></div>
+                    <mat-card-title>{{ image.name }}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image [src]="image.url" alt="image">
+            </mat-card>
+        </a>
     </mat-grid-tile>
 </mat-grid-list>
 

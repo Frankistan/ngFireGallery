@@ -1,5 +1,5 @@
-mat-grid-list {
-    margin: 0.5rem;
+mat-card.image-list-card {
+    padding: 0 !important;
 }
 
 mat-grid-tile a {
