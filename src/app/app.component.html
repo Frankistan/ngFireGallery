@@ -11,7 +11,7 @@
     <span fxFlex></span>
 
     <div fxFlexLayout="row" fxFlex="100">
-        <app-search></app-search>
+        <app-search-bar></app-search-bar>
     </div>
 
     <ng-template [ngIf]="!(auth.isAuthenticated | async)">
@@ -31,9 +31,7 @@
         </button>
     </ng-template>
 
-    <button *ngIf="displaySearchBtn && !(toolbarSrv.isSearching|async)" mat-icon-button (click)="openSearch()">
-        <mat-icon>search</mat-icon>
-    </button>
+    <app-search-button></app-search-button>
 
     <!-- <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
         <button mat-icon-button [matMenuTriggerFor]="appMenu">
@@ -45,7 +43,7 @@
             </a>
             <button mat-menu-item (click)="auth.logout();sidenav.close()"> {{ 'main.sidenav.logout' | translate }} </button>
         </mat-menu>
-    </ng-template> -->
+        </ng-template> -->
     <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
         <app-sort-by></app-sort-by>
     </ng-template>

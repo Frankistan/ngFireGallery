@@ -15,9 +15,6 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnInit {
     title: BehaviorSubject<string> = new BehaviorSubject('title.app');
 
-    isSearching: boolean = false;
-    displaySearchBtn: boolean = true;
-
     constructor(
         private router: Router,
         private setTitleService: SetTitleOnRouteChangeService,
@@ -35,25 +32,15 @@ export class AppComponent implements OnInit {
         // Setting current the lang to use, if the lang isn't available, it will use the current loader to get them
         translate.use(language).subscribe(()=>{
             localStorage.setItem('NGX_TRANSLATE', language);
-        })
-
-        this.setTitleService.currentPath.subscribe((path) => {
-            this.displaySearchBtn = path === "images";
         });
     }
 
     ngOnInit() {
         this.title = this.setTitleService.title;
-        this.isSearching = false;
     }
 
     switchLanguage(language: string) {
         this.translate.use(language);
         localStorage.setItem('NGX_TRANSLATE', language);
-    }
-
-    openSearch() {
-        this.isSearching = true;
-        this.toolbarSrv.isSearching.next(this.isSearching);
     }
 }
