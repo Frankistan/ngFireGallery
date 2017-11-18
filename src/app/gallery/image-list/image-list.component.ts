@@ -13,8 +13,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
     styleUrls: ['./image-list.component.css']
 })
 export class ImageListComponent implements OnInit, OnDestroy {
-    search: any = { name: '' };
-    images: Observable<Image[]>;
+    images: Image[];
     cols: number = 3;
     rowHeight: string = '240px';
     watcher: Subscription;
@@ -23,8 +22,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
     showSpinner: boolean = true;
     display = "flex";
 
-    // sortBy: BehaviorSubject<string>;
-    // sortBy: string = "image.createdAt";
+    search: any = { name: '' };
     sortBy: BehaviorSubject<{}> = new BehaviorSubject({ sortBy: 'createdAt', order: '' });
     order: string = '';
 
@@ -34,16 +32,35 @@ export class ImageListComponent implements OnInit, OnDestroy {
         private router: Router,
         private route: ActivatedRoute,
     ) {
+
+        let w = window,
+            d = document,
+            e = d.documentElement,
+            g = d.getElementsByTagName('body')[0],
+            x = w.innerWidth || e.clientWidth || g.clientWidth,
+            y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+        switch (true) {
+            case (x < 599): this.cols = 2; // 'screen and (max-width: 599px)'
+                break;
+            case (x < 959): this.cols = 3; // 'screen and (min-width: 600px) and (max-width: 959px)'
+                break;
+            case (x < 1279): this.cols = 4; // 'screen and (min-width: 960px) and (max-width: 1279px)'
+                break;
+            case (x < 1919): this.cols = 5; // 'screen and (min-width: 1280px) and (max-width: 1919px)'
+                break;
+        };
+
         this.watcher = media.asObservable().subscribe((change: MediaChange) => {
-            // console.log('tamaño: ', change.mqAlias);
+
             switch (change.mqAlias) {
-                case 'xs': this.cols = 2;
+                case 'xs': this.cols = 2; // 'screen and (max-width: 599px)'
                     break;
-                case 'sm': this.cols = 3;
+                case 'sm': this.cols = 3; // 'screen and (min-width: 600px) and (max-width: 959px)'
                     break;
-                case 'md': this.cols = 4;
+                case 'md': this.cols = 4; // 'screen and (min-width: 960px) and (max-width: 1279px)'
                     break;
-                case 'lg': this.cols = 4;
+                case 'lg': this.cols = 5; // 'screen and (min-width: 1280px) and (max-width: 1919px)'
                     break;
             }
         });
@@ -70,11 +87,9 @@ export class ImageListComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.images = this.imageService.list();
-
         this.display = "flex";
-        // this.subscription = this.images.subscribe(() => this.showSpinner = false);
-        this.subscription = this.images.subscribe(images => {
+        this.subscription = this.imageService.list().subscribe(images => {
+            this.images =images;
             this.showSpinner = false;
             this.totalImages = images.length > 0;
             if (this.totalImages) { this.display = "flex"; }

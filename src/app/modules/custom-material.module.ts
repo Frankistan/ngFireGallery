@@ -11,7 +11,8 @@ import {
     MatSnackBarModule,
     MatProgressBarModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
 } from '@angular/material';
 
 import { PlatformModule } from '@angular/cdk/platform';
@@ -29,7 +30,8 @@ const MaterialModule = [
     MatSnackBarModule,
     MatProgressBarModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
 ];
 
 @NgModule({

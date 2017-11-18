@@ -14,7 +14,7 @@ import * as firebase from 'firebase/app';
 export class AuthService {
     private _user$: Observable<User>;
     private _isLoggedIn$: Observable<boolean>;
-    private socialLogin: Observable<boolean>;
+    socialLogin: Observable<boolean>;
 
     constructor(
         private afAuth: AngularFireAuth,
