@@ -35,7 +35,7 @@
         <mat-icon>search</mat-icon>
     </button>
 
-    <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
+    <!-- <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
         <button mat-icon-button [matMenuTriggerFor]="appMenu">
             <mat-icon>more_vert</mat-icon>
         </button>
@@ -44,6 +44,25 @@
                 <span>{{ 'main.sidenav.gallery' | translate }}</span>
             </a>
             <button mat-menu-item (click)="auth.logout();sidenav.close()"> {{ 'main.sidenav.logout' | translate }} </button>
+        </mat-menu>
+    </ng-template> -->
+    <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
+        <button mat-icon-button [matMenuTriggerFor]="sortMenu">
+            <mat-icon>sort</mat-icon>
+        </button>
+        <mat-menu #sortMenu="matMenu">
+            <button mat-menu-item (click)="orderBy('createdAt')" *ngIf="imageService.sortBy | async; let data;">
+            {{ 'main.sortBy.date' | translate }}
+                <mat-icon>
+                    {{ (data.sortBy =="createdAt" && data.order =='') ? 'arrow_drop_down' : 'arrow_drop_up'}}
+                </mat-icon>
+            </button>
+            <button mat-menu-item (click)="orderBy('originalName')" *ngIf="imageService.sortBy | async; let data;">
+                {{ 'main.sortBy.name' | translate }}
+                <mat-icon>
+                    {{ (data.sortBy =="originalName" && data.order =='')  ? 'arrow_drop_up' : 'arrow_drop_down'}}
+                </mat-icon>
+            </button>
         </mat-menu>
     </ng-template>
 </mat-toolbar>

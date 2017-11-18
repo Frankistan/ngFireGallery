@@ -51,7 +51,8 @@ export class UploadImageService {
                     createdAt: this.timestamp,
                     uid: this.userId,
                     url: uploadTask.snapshot.downloadURL,
-                    liked: false
+                    liked: false,
+                    originalName: upload.name.split("_")[2]
                 }
                 this.imageService.create(image);
             }

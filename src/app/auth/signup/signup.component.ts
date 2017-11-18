@@ -40,8 +40,6 @@ export class SignupComponent {
                 this.router.navigate(['/images']);
             },
         error => {
-            console.log('error: ',error);
-
             this.snackBar.open('toast.serverResponse.' + error.code, 'toast.close');
         });
     }

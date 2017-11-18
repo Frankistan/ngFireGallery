@@ -68,6 +68,10 @@
         }
     },
     "main": {
+        "sortBy": {
+            "date": "Fecha",
+            "name": "Nombre"
+        },
         "search": "Buscar...",
         "sidenav": {
             "change_language": "Cambiar idioma",

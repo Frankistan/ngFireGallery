@@ -9,6 +9,7 @@ import { CustomTranslationModule } from './modules/custom-translation.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MomentModule } from 'angular2-moment';
 import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
+import { OrderModule } from 'ngx-order-pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RoutingModule } from './modules/routing.module';
 import { AppComponent } from './app.component';
@@ -72,6 +73,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         FormsModule,
         MomentModule,
         Ng2FilterPipeModule,
+        OrderModule,
         // PipesModule,
         ReactiveFormsModule,
         RoutingModule,

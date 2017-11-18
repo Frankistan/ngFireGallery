@@ -5,4 +5,5 @@ export interface Image {
     name: string;
     uid?: string;
     url: string;
+    originalName?: string;
 }

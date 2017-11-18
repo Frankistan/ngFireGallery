@@ -1,7 +1,7 @@
 <loading-spinner *ngIf="showSpinner"></loading-spinner>
 
 <mat-grid-list [cols]="cols" [rowHeight]="rowHeight" gutterSize="4px" [ngStyle]="{'display': display}">
-    <mat-grid-tile *ngFor="let image of images|async| filterBy: search">
+    <mat-grid-tile *ngFor="let image of images |async | filterBy: search | orderBy: sortBy: order">
         <a [routerLink]="['/images', image.id]">
             <mat-card>
                 <mat-card-header>

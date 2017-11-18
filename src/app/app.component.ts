@@ -1,3 +1,4 @@
+import { ImageService } from './shared/image.service';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -13,13 +14,17 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
     title: BehaviorSubject<string> = new BehaviorSubject('title.app');
+
     isSearching: boolean = false;
     displaySearchBtn: boolean = true;
+    order:string="";
+
     constructor(
         private router: Router,
         private setTitleService: SetTitleOnRouteChangeService,
         private translate: TranslateService,
         public auth: AuthService,
+        public imageService:ImageService,
         public toolbarSrv: ToolbarService,
     ) {
 
@@ -48,7 +53,10 @@ export class AppComponent implements OnInit {
         localStorage.setItem('NGX_TRANSLATE', language);
     }
 
-
+    orderBy(mode:string){
+        this.order = this.order=="" ? 'reverse' : "";
+        this.imageService.sortBy.next({ sortBy: mode, order: this.order });
+    }
 
     openSearch() {
         this.isSearching = true;

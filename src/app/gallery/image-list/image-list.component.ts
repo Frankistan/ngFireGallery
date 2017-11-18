@@ -23,6 +23,11 @@ export class ImageListComponent implements OnInit, OnDestroy {
     showSpinner: boolean = true;
     display = "flex";
 
+    // sortBy: BehaviorSubject<string>;
+    // sortBy: string = "image.createdAt";
+    sortBy: BehaviorSubject<{}> = new BehaviorSubject({ sortBy: 'createdAt', order: '' });
+    order:string = '';
+
     constructor(
         private imageService: ImageService,
         public media: ObservableMedia,
@@ -46,6 +51,13 @@ export class ImageListComponent implements OnInit, OnDestroy {
             this.search = filter;
         });
 
+        this.imageService.sortBy.subscribe((data:any) => {
+            console.log('data: ',data);
+
+            this.sortBy = data.sortBy;
+            this.order = data.order;
+        });
+
         this.route.url.subscribe((ruta) => {
             if (ruta[0].path === "favorites") {
                 this.imageService.query.next({
@@ -61,9 +73,10 @@ export class ImageListComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.images = this.imageService.list();
+
         this.display = "flex";
         // this.subscription = this.images.subscribe(() => this.showSpinner = false);
-        this.subscription = this.images.subscribe((images) => {
+        this.subscription = this.images.subscribe(images => {
             this.showSpinner = false;
             this.totalImages = images.length > 0;
             if (this.totalImages) { this.display = "flex"; }

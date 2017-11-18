@@ -21,6 +21,8 @@ export class ImageService {
     filter: any = null;
 
     search: BehaviorSubject<any> = new BehaviorSubject<any>({ name: "" });
+    sortBy: BehaviorSubject<{}> = new BehaviorSubject({ sortBy: 'createdAt',order: ''});
+    // order: BehaviorSubject<string> = new BehaviorSubject('');
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -35,17 +37,19 @@ export class ImageService {
                 this.userId = user.uid;
 
                 this.imagesCollection = this.afs.doc(`images/${user.uid}`)
-                    .collection('album', ref => ref.orderBy('createdAt', 'desc'));
+                    .collection('album', ref => ref.orderBy('createdAt', 'asc'));
 
+                    this.images = this.imagesCollection.valueChanges();
                 // FUENTE: https://www.youtube.com/watch?v=cwqeyOFcaoA
-                this.images = this.imagesCollection.snapshotChanges().map(changes => {
-                    return changes.map(a => {
-                        // if(!a.payload.doc.exists) return ;
-                        const data = a.payload.doc.data() as Image;
-                        data.id = a.payload.doc.id;
-                        return data;
-                    });
-                });
+                // this.images = this.imagesCollection.snapshotChanges()
+                //                 .map(changes => {
+                //                     return changes.map(a => {
+                //                         const data = a.payload.doc.data() as Image;
+                //                         data.id = a.payload.doc.id;
+                //                         data.originalName = data.name.split("_")[2];
+                //                         return data;
+                //                     });
+                //                 });
             }
         });
     }
