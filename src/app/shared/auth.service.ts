@@ -14,7 +14,7 @@ import * as firebase from 'firebase/app';
 export class AuthService {
     private _user$: Observable<User>;
     private _isLoggedIn$: Observable<boolean>;
-    socialLogin = new BehaviorSubject<boolean>(false);
+    private socialLogin: Observable<boolean>;
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -25,9 +25,12 @@ export class AuthService {
     ) {
         this._user$ = this.afAuth.authState.
             switchMap((user) => {
+
                 if (user) {
+                    this.socialLogin = Observable.of(user.providerData[0].providerId!="password");
                     return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
                 } else {
+                    this.socialLogin = Observable.of(false);
                     return Observable.of(null);
                 }
             });
@@ -39,7 +42,7 @@ export class AuthService {
     }
 
     login(email: string, password: string): Observable<Promise<any>> {
-        this.socialLogin.next(false);
+        // this.socialLogin.next(false);
         return Observable.fromPromise(this.afAuth.auth.signInWithEmailAndPassword(email, password));
     }
 
@@ -90,7 +93,9 @@ export class AuthService {
     private oAuthLogin(provider) {
         return this.afAuth.auth.signInWithPopup(provider)
             .then((credential) => {
-                this.socialLogin.next(true);
+                console.log('credential',credential);
+
+                // this.socialLogin.next(true);
 
                 const data: User = {
                     uid: credential.user.uid,
