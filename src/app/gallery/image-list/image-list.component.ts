@@ -26,7 +26,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
     // sortBy: BehaviorSubject<string>;
     // sortBy: string = "image.createdAt";
     sortBy: BehaviorSubject<{}> = new BehaviorSubject({ sortBy: 'createdAt', order: '' });
-    order:string = '';
+    order: string = '';
 
     constructor(
         private imageService: ImageService,
@@ -51,9 +51,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
             this.search = filter;
         });
 
-        this.imageService.sortBy.subscribe((data:any) => {
-            console.log('data: ',data);
-
+        this.imageService.sortBy.subscribe((data: any) => {
             this.sortBy = data.sortBy;
             this.order = data.order;
         });
