@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
 
     isSearching: boolean = false;
     displaySearchBtn: boolean = true;
-    order:string="";
 
     constructor(
         private router: Router,
@@ -51,11 +50,6 @@ export class AppComponent implements OnInit {
     switchLanguage(language: string) {
         this.translate.use(language);
         localStorage.setItem('NGX_TRANSLATE', language);
-    }
-
-    orderBy(mode:string){
-        this.order = this.order=="" ? 'reverse' : "";
-        this.imageService.sortBy.next({ sortBy: mode, order: this.order });
     }
 
     openSearch() {

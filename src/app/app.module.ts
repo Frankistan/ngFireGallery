@@ -40,6 +40,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
+import { SortByComponent } from './sort-by/sort-by.component';
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
 
@@ -60,6 +61,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         SidenavListComponent,
         SignupComponent,
         WelcomeComponent,
+        SortByComponent,
     ],
     imports: [
         BrowserModule,
