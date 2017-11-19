@@ -27,6 +27,7 @@ import { UploadImageService } from './shared/upload-image.service';
 import { UserService } from './shared/user.service';
 /* COMPONENTS */
 import { DeleteImageDialogComponent } from './dialogs/delete-image-dialog/delete-image-dialog.component';
+import { EmptyGalleryComponent } from './gallery/empty-gallery/empty-gallery.component';
 import { ImageDetailComponent } from './gallery/image-detail/image-detail.component';
 import { ImageListComponent } from './gallery/image-list/image-list.component';
 import { ImageUploadComponent } from './gallery/image-upload/image-upload.component';
@@ -43,7 +44,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
-import { EmptyGalleryComponent } from './gallery/empty-gallery/empty-gallery.component';
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
 
