@@ -1,8 +1,4 @@
-<div *ngIf="showSpinner" fxLayout="row" fxLayoutAlign="center center" fxFlexFill>
-    <mat-spinner></mat-spinner>
-</div>
-
-<mat-grid-list *ngIf="!showSpinner" [cols]="cols" [rowHeight]="rowHeight" gutterSize="4px" [ngStyle]="{'display': display}">
+<mat-grid-list *ngIf="!(spinnerSrv.display|async)" [cols]="cols" [rowHeight]="rowHeight" gutterSize="4px" [ngStyle]="{'display': display}">
     <mat-grid-tile *ngFor="let image of images | filterBy: search | orderBy: sortBy: order">
         <a [routerLink]="['/images', image.id]">
             <mat-card class="image-list-card">
@@ -16,8 +12,7 @@
     </mat-grid-tile>
 </mat-grid-list>
 
-<app-empty-gallery *ngIf="!totalImages && !showSpinner"></app-empty-gallery>
-
+<app-empty-gallery *ngIf="!totalImages && !(spinnerSrv.display|async)"></app-empty-gallery>
 
 <button mat-fab class="md-fab-bottom-right" routerLink="/upload">
     <mat-icon  aria-label="subir imagen">add</mat-icon>

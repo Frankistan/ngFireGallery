@@ -6,6 +6,7 @@ import { Image } from '../../models/image';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { SpinnerService } from '../../shared/spinner.service';
 
 @Component({
     selector: 'app-image-list',
@@ -19,7 +20,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
     watcher: Subscription;
     subscription: Subscription;
     totalImages: boolean;
-    showSpinner: boolean = true;
+    // showSpinner: boolean = true;
     display = "flex";
 
     search: any = { name: '' };
@@ -31,6 +32,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
         public media: ObservableMedia,
         private router: Router,
         private route: ActivatedRoute,
+        public spinnerSrv:SpinnerService,
     ) {
 
         let w = window,
@@ -88,15 +90,21 @@ export class ImageListComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.display = "flex";
+        this.spinnerSrv.display.next(true);
+        setTimeout(() => {
+
+
         this.subscription = this.imageService.list().subscribe(images => {
             this.images =images;
-            this.showSpinner = false;
+            // this.showSpinner = false;
             this.totalImages = images.length > 0;
             if (this.totalImages) { this.display = "flex"; }
             else {
                 this.display = "none";
             }
+            this.spinnerSrv.display.next(false);
         });
+        }, 4000);
     }
 
     ngOnDestroy() {

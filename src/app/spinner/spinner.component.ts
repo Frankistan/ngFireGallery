@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SpinnerService } from '../shared/spinner.service';
 
 @Component({
-  selector: 'app-spinner',
-  templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.css']
+    selector: 'app-spinner',
+    templateUrl: './spinner.component.html',
+    styleUrls: ['./spinner.component.css']
 })
-export class SpinnerComponent implements OnInit {
+export class SpinnerComponent {
+    display: boolean = false;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+    constructor(spinnerSrv: SpinnerService,
+    ) {
+        spinnerSrv.display.subscribe(mode => this.display = mode);
+    }
 
 }
