@@ -40,15 +40,15 @@
             <mat-divider></mat-divider>
 
             <div fxLayout="row" fxLayoutAlign="space-between center">
-                <button fxFlex="30" mat-raised-button (click)="auth.googleLogin()">
+                <button fxFlex="30" mat-raised-button (click)="socialLogin('google')">
                     <img src="../../../assets/img/google.png" class="icon-img" alt="google" />
                     <span fxHide.lt-md="true">Google</span>
                 </button>
-                <button fxFlex="30" mat-raised-button (click)="auth.facebookLogin()">
+                <button fxFlex="30" mat-raised-button (click)="socialLogin('facebook')">
                     <img src="../../../assets/img/facebook.png" class="icon-img" alt="facebook" />
                     <span fxHide.lt-md="true">Facebook</span>
                 </button>
-                <button fxFlex="30" mat-raised-button (click)="auth.githubLogin()">
+                <button fxFlex="30" mat-raised-button (click)="socialLogin('github')">
                     <img src="../../../assets/img/github.png" class="icon-img" alt="github" />
                     <span fxHide.lt-md="true">Github</span>
                 </button>

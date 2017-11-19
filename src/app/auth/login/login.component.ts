@@ -33,14 +33,21 @@ export class LoginComponent implements OnInit {
 
     login() {
         const inputValue = this.loginForm.value;
-        this.auth.login(inputValue.email, inputValue.password).subscribe(
+        this.auth.login(inputValue.email, inputValue.password)
+        .subscribe(
             success => {
-                this.router.navigate(['/home']);
+                this.router.navigate(['/images']);
             },
             error => {
                 this.snackBar.open('toast.serverResponse.'+error.code, 'toast.close');
             }
         );
+    }
+
+    socialLogin(provider:string){
+        this.auth.loginWithProvider(provider)
+            .then(success => { this.router.navigate(['/images']); })
+            .catch(error => { this.snackBar.open('toast.serverResponse.' + error.code, 'toast.close'); });
     }
 
 }

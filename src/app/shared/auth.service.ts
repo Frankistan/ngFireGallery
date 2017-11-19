@@ -31,7 +31,7 @@ export class AuthService {
                 if (user) {
                     this.lastLoginAt.next(user.metadata.lastSignInTime);
 
-                    this.socialLogin = Observable.of(user.providerData[0].providerId!="password");
+                    this.socialLogin = Observable.of(user.providerData[0].providerId != "password");
                     return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
                 } else {
                     this.socialLogin = Observable.of(false);
@@ -51,7 +51,6 @@ export class AuthService {
     }
 
     signup(user: any = {}) {
-        // return Observable.fromPromise(this.afAuth.auth.createUserWithEmailAndPassword(email, password));
         return Observable.fromPromise(this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
             .then((firebaseUser) => {
                 const data: User = {
@@ -76,30 +75,28 @@ export class AuthService {
         return auth.sendPasswordResetEmail(email);
     }
 
-    googleLogin() {
-        const provider = new firebase.auth.GoogleAuthProvider();
+    loginWithProvider(providerName: string): Promise<void> {
 
-        return this.oAuthLogin(provider);
-    }
+        let provider = null;
+        switch (providerName) {
+            case 'google':
+                provider = new firebase.auth.GoogleAuthProvider();
+                break;
+            case 'facebook':
+                provider = new firebase.auth.FacebookAuthProvider();
+                break;
+            case 'github':
+                provider = new firebase.auth.GithubAuthProvider();
+                break;
+            default: ;
 
-    facebookLogin() {
-        const provider = new firebase.auth.FacebookAuthProvider();
-
-        return this.oAuthLogin(provider);
-    }
-
-    githubLogin() {
-        const provider = new firebase.auth.GithubAuthProvider();
-
+        }
         return this.oAuthLogin(provider);
     }
 
     private oAuthLogin(provider) {
         return this.afAuth.auth.signInWithPopup(provider)
             .then((credential) => {
-                console.log('credential',credential);
-
-                // this.socialLogin.next(true);
 
                 const data: User = {
                     uid: credential.user.uid,
