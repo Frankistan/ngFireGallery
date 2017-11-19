@@ -6,6 +6,15 @@
         "pwd_match": "Las contraseñas no coinciden",
         "required": "Campo obligatorio"
     },
+    "settings": {
+        "button": "Guardar Cambios",
+        "appearance": {
+            "section": "Apariencia",
+            "title": "Cambia el tema actual",
+            "description": "Elige entre tema oscuro o claro"
+        },
+        "other": "Otros"
+    },
     "title": {
         "app": "NgGallery",
         "detail": "Imagen",

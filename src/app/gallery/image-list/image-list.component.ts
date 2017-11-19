@@ -94,9 +94,10 @@ export class ImageListComponent implements OnInit, OnDestroy {
 
         this.subscription = this.imageService.list().subscribe(images => {
             this.images =images;
-            // this.showSpinner = false;
             this.totalImages = images.length > 0;
-            if (this.totalImages) { this.display = "flex"; }
+            if (this.totalImages) {
+                this.display = "flex";
+            }
             else {
                 this.display = "none";
             }

@@ -1,3 +1,4 @@
+import { SettingsComponent } from './../settings/settings.component';
 import { ResetPasswordComponent } from './../auth/reset-password/reset-password.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -27,7 +28,8 @@ const routes: Routes = [
                 value: 'home',
             }
         }
-    },{
+    },
+    {
         path: 'favorites', component: ImageListComponent, canActivate: [AuthGuard],
         data: {
             title: 'favorites',
@@ -95,6 +97,14 @@ const routes: Routes = [
             title: 'profile',
             animation: {
                 value: 'user-profile',
+            }
+        }
+    },
+    {
+        path: 'settings', component: SettingsComponent, data: {
+            title: 'settings',
+            animation: {
+                value: 'settings',
             }
         }
     },

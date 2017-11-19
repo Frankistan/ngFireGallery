@@ -6,6 +6,15 @@
         "pwd_match": "Passwords do not match",
         "required": "Required field"
     },
+    "settings": {
+        "button": "Save Changes",
+        "appearance": {
+            "section": "Appearance",
+            "title": "Change the current theme",
+            "description": "Choose between light and dark theme"
+        },
+        "other": "Others"
+    },
     "title": {
         "app": "NgGallery",
         "detail": "Image",

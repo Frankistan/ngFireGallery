@@ -44,6 +44,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
+import { SettingsComponent } from './settings/settings.component';
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
 
@@ -67,6 +68,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         SearchBarComponent,
         SpinnerComponent,
         EmptyGalleryComponent,
+        SettingsComponent,
     ],
     imports: [
         BrowserModule,

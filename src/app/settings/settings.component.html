@@ -1,0 +1,35 @@
+<div fxLayoutAlign="center">
+    <mat-card fxLayout="column" fxFlex="100" fxFlex.sm="65" fxFlex.gt-sm="40">
+
+        <mat-card-content>
+
+            <mat-list>
+                <h3 matSubheader>{{ 'settings.appearance.section' | translate }}</h3>
+                <mat-list-item *ngFor="let folder of folders">
+                    <mat-icon matListIcon>format_color_fill</mat-icon>
+                    <h4 matLine> {{ 'settings.appearance.title' | translate }} </h4>
+                    <p matLine> {{ 'settings.appearance.description' | translate }}</p>
+                    <span fxLayoutAlign="space-between">
+                            <mat-icon>brightness_5</mat-icon>
+                            <mat-slide-toggle></mat-slide-toggle>
+                            <mat-icon>brightness_3</mat-icon>
+                       </span >
+
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <h3 matSubheader>{{ 'settings.other' | translate }}</h3>
+                <mat-list-item *ngFor="let note of notes">
+                    <mat-icon matListIcon>note</mat-icon>
+                    <h4 matLine>{{note.name}}</h4>
+                    <p matLine class="demo-2"> {{note.updated}} </p>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+            <button color="primary" mat-raised-button (click)="saveChanges()">
+                {{ 'settings.button' | translate }}
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
