@@ -21,6 +21,7 @@ import { AuthService } from './shared/auth.service';
 import { ImageService } from './shared/image.service';
 import { SetTitleOnRouteChangeService } from './shared/set-title-on-route-change.service';
 import { SnackbarService } from './shared/snackbar.service';
+import { SpinnerService } from './shared/spinner.service';
 import { ToolbarService } from './shared/toolbar.service';
 import { UploadImageService } from './shared/upload-image.service';
 import { UserService } from './shared/user.service';
@@ -33,14 +34,16 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProfileDetailsComponent } from './user/profile-details/profile-details.component';
 import { ProfileInfoComponent } from './user/profile-info/profile-info.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { SearchBarComponent } from './search/search-bar/search-bar.component';
+import { SearchButtonComponent } from './search/search-button/search-button.component';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { SortByComponent } from './sort-by/sort-by.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
-import { SortByComponent } from './sort-by/sort-by.component';
-import { SearchButtonComponent } from './search/search-button/search-button.component';
-import { SearchBarComponent } from './search/search-bar/search-bar.component';
+import { EmptyGalleryComponent } from './gallery/empty-gallery/empty-gallery.component';
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
 
@@ -62,6 +65,8 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
         SortByComponent,
         SearchButtonComponent,
         SearchBarComponent,
+        SpinnerComponent,
+        EmptyGalleryComponent,
     ],
     imports: [
         BrowserModule,
@@ -93,6 +98,7 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
         ToolbarService,
         UploadImageService,
         UserService,
+        SpinnerService,
     ],
     bootstrap: [AppComponent]
 })

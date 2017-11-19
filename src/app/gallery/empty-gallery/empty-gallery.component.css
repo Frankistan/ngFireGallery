@@ -1,0 +1,8 @@
+.no-image-icon {
+    font-size: 400px;
+    color: lightgray;
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    rotation: -30deg;
+    width: 25vw;
+}
