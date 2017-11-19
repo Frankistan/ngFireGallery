@@ -15,6 +15,8 @@ export class AuthService {
     private _user$: Observable<User>;
     private _isLoggedIn$: Observable<boolean>;
     socialLogin: Observable<boolean>;
+    // lastLoginAt: BehaviorSubject<any>;
+    lastLoginAt: BehaviorSubject<any> = new BehaviorSubject(null);
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -27,6 +29,8 @@ export class AuthService {
             switchMap((user) => {
 
                 if (user) {
+                    this.lastLoginAt.next(user.metadata.lastSignInTime);
+
                     this.socialLogin = Observable.of(user.providerData[0].providerId!="password");
                     return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
                 } else {

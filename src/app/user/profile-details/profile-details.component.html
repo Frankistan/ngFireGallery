@@ -8,6 +8,11 @@
                 <div mat-card-avatar class="card-header-image" [ngStyle]="{'background-image': 'url(' + user.photoURL + ')'}"></div>
                 <mat-card-title>{{ user.displayName }}</mat-card-title>
                 <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+                <mat-card-subtitle class="lastLogin">
+                    <mat-icon>access_time</mat-icon>
+                    <span>{{ 'profile.lastLogin' | translate  }} : </span>
+                    <time>{{ auth.lastLoginAt|async | amTimeAgo }}</time>
+                </mat-card-subtitle>
             </mat-card-header>
             <form autocomplete="off" novalidate [formGroup]="profileForm" (submit)="updateProfile()">
                 <mat-card-content style="margin-top: 2em">
@@ -53,7 +58,19 @@
         </mat-card>
     </ng-template>
     <ng-template #social>
-        <h5>Social login</h5>
+        <mat-card fxLayout="column" fxFlex="100" fxFlex.sm="80" fxFlex.gt-sm="40" *ngIf="auth.user | async; let user;">
+            <mat-card-header>
+                <div mat-card-avatar class="card-header-image" [ngStyle]="{'background-image': 'url(' + user.photoURL + ')'}"></div>
+                <mat-card-title>{{ user.displayName }}</mat-card-title>
+                <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+                <mat-card-subtitle class="lastLogin">
+                    <mat-icon>access_time</mat-icon>
+                    <span>{{ 'profile.lastLogin' | translate  }} : </span>
+                    <time>{{ auth.lastLoginAt|async | amTimeAgo }}</time>
+                </mat-card-subtitle>
+            </mat-card-header>
+
+        </mat-card>
     </ng-template>
 
 

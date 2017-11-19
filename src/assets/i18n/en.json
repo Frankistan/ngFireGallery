@@ -176,6 +176,7 @@
         "subtitle": "Hit the bottom right button to upload some"
     },
     "profile": {
+        "lastLogin": "Last login",
         "t": {
             "profile": "Profile"
         },

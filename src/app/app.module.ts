@@ -29,7 +29,6 @@ import { DeleteImageDialogComponent } from './dialogs/delete-image-dialog/delete
 import { ImageDetailComponent } from './gallery/image-detail/image-detail.component';
 import { ImageListComponent } from './gallery/image-list/image-list.component';
 import { ImageUploadComponent } from './gallery/image-upload/image-upload.component';
-import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ProfileDetailsComponent } from './user/profile-details/profile-details.component';
 import { ProfileInfoComponent } from './user/profile-info/profile-info.component';
@@ -53,7 +52,6 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
         ImageDetailComponent,
         ImageListComponent,
         ImageUploadComponent,
-        LoadingSpinnerComponent,
         LoginComponent,
         ProfileDetailsComponent,
         ProfileInfoComponent,
@@ -78,9 +76,9 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
         MomentModule,
         Ng2FilterPipeModule,
         OrderModule,
-        // PipesModule,
         ReactiveFormsModule,
         RoutingModule,
+        // PipesModule,
     ],
     entryComponents: [
         DeleteImageDialogComponent

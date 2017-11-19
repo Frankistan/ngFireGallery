@@ -175,6 +175,7 @@
         "subtitle": "Pulsa el botón de la esquina inferior para subir alguna"
     },
     "profile": {
+        "lastLogin": "Última conexión",
         "t": {
             "profile": "Perfil"
         },

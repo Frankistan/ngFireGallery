@@ -6,6 +6,9 @@ import { SnackbarService } from '../../shared/snackbar.service';
 // import { ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../shared/user.service';
+import * as moment from 'moment';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-profile-details',
@@ -17,12 +20,14 @@ export class ProfileDetailsComponent {
     profileForm: FormGroup;
     userInfo: User;
     showFields: boolean = false;
+    subscription: Subscription;
 
     constructor(
         public auth: AuthService,
         private formBuilder: FormBuilder,
         private snackBar: SnackbarService,
         private userService: UserService,
+        public translate: TranslateService,
     ) {
         auth.user.subscribe((user) => {
             this.userInfo = user;
@@ -38,6 +43,14 @@ export class ProfileDetailsComponent {
                     });
             }
 
+        });
+
+        moment.locale(translate.currentLang);
+
+        // cambia el idioma de TIMEAGO cuando cambia el idioma de la App
+        // FUNCIONA CON this.lastUpdated = new Date();
+        this.subscription = this.translate.onLangChange.map(event => { return event.lang; }).subscribe((language) => {
+            moment.locale(language);
         });
     }
 
