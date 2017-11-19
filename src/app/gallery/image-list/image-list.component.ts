@@ -91,8 +91,6 @@ export class ImageListComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.display = "flex";
         this.spinnerSrv.display.next(true);
-        setTimeout(() => {
-
 
         this.subscription = this.imageService.list().subscribe(images => {
             this.images =images;
@@ -104,7 +102,6 @@ export class ImageListComponent implements OnInit, OnDestroy {
             }
             this.spinnerSrv.display.next(false);
         });
-        }, 4000);
     }
 
     ngOnDestroy() {
