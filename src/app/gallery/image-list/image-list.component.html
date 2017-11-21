@@ -14,6 +14,6 @@
 
 <app-empty-gallery *ngIf="!totalImages && !(spinnerSrv.display|async)"></app-empty-gallery>
 
-<button mat-fab class="md-fab-bottom-right" routerLink="/upload">
-    <mat-icon  aria-label="subir imagen">add</mat-icon>
+<button [ngStyle]="{'display': (scrollSrv.scrolling|async)=='up' ? 'block':'none'}" mat-fab class="md-fab-bottom-right" routerLink="/upload">
+    <mat-icon aria-label="subir imagen">add</mat-icon>
 </button>

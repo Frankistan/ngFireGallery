@@ -7,6 +7,7 @@ import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { SpinnerService } from '../../shared/spinner.service';
+import { ScrollService } from '../../shared/scroll.service';
 
 @Component({
     selector: 'app-image-list',
@@ -33,6 +34,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
         private router: Router,
         private route: ActivatedRoute,
         public spinnerSrv:SpinnerService,
+        public scrollSrv: ScrollService,
     ) {
 
         let w = window,
@@ -107,6 +109,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.watcher.unsubscribe();
+        this.spinnerSrv.display.next(false);
         if (this.subscription)
             this.subscription.unsubscribe();
     }

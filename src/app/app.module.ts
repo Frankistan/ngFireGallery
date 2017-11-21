@@ -12,6 +12,7 @@ import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 import { OrderModule } from 'ngx-order-pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RoutingModule } from './modules/routing.module';
+import { ScrollTrackerModule } from '@nicky-lenaers/ngx-scroll-tracker';
 import { AppComponent } from './app.component';
 /* GUARDS */
 import { AuthGuard } from './guards/auth.guard';
@@ -45,6 +46,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
 import { SettingsComponent } from './settings/settings.component';
+import { ScrollService } from './shared/scroll.service';
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
 
@@ -85,6 +87,7 @@ import { SettingsComponent } from './settings/settings.component';
         OrderModule,
         ReactiveFormsModule,
         RoutingModule,
+        ScrollTrackerModule.forRoot(),
         // PipesModule,
     ],
     entryComponents: [
@@ -101,6 +104,7 @@ import { SettingsComponent } from './settings/settings.component';
         UploadImageService,
         UserService,
         SpinnerService,
+        ScrollService,
     ],
     bootstrap: [AppComponent]
 })

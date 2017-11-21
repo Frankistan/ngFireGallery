@@ -1,4 +1,4 @@
-<mat-toolbar [color]="(toolbarSrv.isSearching|async) ? '': 'primary'">
+<mat-toolbar [color]="(toolbarSrv.isSearching|async) ? '': 'primary'" (click)="sidenav.close()">
 
     <button mat-icon-button (click)="sidenav.toggle()" *ngIf="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
         <mat-icon>menu</mat-icon>
@@ -48,6 +48,7 @@
         <app-sort-by></app-sort-by>
     </ng-template>
 </mat-toolbar>
+
 <mat-sidenav-container>
     <mat-sidenav #sidenav mode="over" fullscreen>
         <app-profile-info (click)="sidenav.close()"></app-profile-info>
@@ -59,7 +60,7 @@
     </div> -->
     <!-- USAR ESTO SI EN LA ANIMACION DE CAMBIO DE PAGINAS DA ERROR O ANIMA DE FORMA EXTRAÑA -->
 
-    <div class="container">
+    <div class="container" (ngx-scroll-tracker)="scrollHandler($event)">
         <app-spinner></app-spinner>
         <router-outlet #outlet="outlet"></router-outlet>
     </div>
