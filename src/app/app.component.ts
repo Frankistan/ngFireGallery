@@ -15,6 +15,8 @@ import { ScrollService } from './shared/scroll.service';
 export class AppComponent implements OnInit {
     title: BehaviorSubject<string> = new BehaviorSubject('title.app');
     scrollPosition: number = 0;
+    scrollableElement = null;
+    offSet: number = 240;
 
     constructor(
         private setTitleService: SetTitleOnRouteChangeService,
@@ -41,12 +43,16 @@ export class AppComponent implements OnInit {
 
     scrollHandler(eventData: ScrollTrackerEventData) {
         let win = eventData.$event.srcElement ? eventData.$event.srcElement.scrollTop : 0;
-
         let scroll = win;
-        if (scroll > this.scrollPosition) {
+
+        if (scroll > this.scrollPosition && this.scrollPosition> this.offSet) {
+
             this.scrollSrv.scrolling.next('down');
         } else {
             this.scrollSrv.scrolling.next('up');
+            if (eventData.$event.srcElement){
+                this.scrollableElement = eventData.$event.srcElement;
+            }
         }
         this.scrollPosition = scroll;
     }

@@ -63,5 +63,7 @@
     <div class="container" (ngx-scroll-tracker)="scrollHandler($event)">
         <app-spinner></app-spinner>
         <router-outlet #outlet="outlet"></router-outlet>
+        <scroll-to-top-fab [htmlElement]="scrollableElement"></scroll-to-top-fab>
+
     </div>
 </mat-sidenav-container>

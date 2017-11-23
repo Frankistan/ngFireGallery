@@ -1,0 +1,3 @@
+<button [ngStyle]="{'display': (scrollSrv.scrolling|async)=='down' ? 'block':'none'}" mat-fab class="md-fab-bottom-right" (click)="scrollToTop()">
+    <mat-icon aria-label="subir imagen">arrow_upward</mat-icon>
+</button>

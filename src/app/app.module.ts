@@ -20,6 +20,7 @@ import { LoggedInGuard } from './guards/logged-in.guard';
 /* SERVICES */
 import { AuthService } from './shared/auth.service';
 import { ImageService } from './shared/image.service';
+import { SettingsComponent } from './settings/settings.component';
 import { SetTitleOnRouteChangeService } from './shared/set-title-on-route-change.service';
 import { SnackbarService } from './shared/snackbar.service';
 import { SpinnerService } from './shared/spinner.service';
@@ -36,6 +37,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProfileDetailsComponent } from './user/profile-details/profile-details.component';
 import { ProfileInfoComponent } from './user/profile-info/profile-info.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { ScrollToTopFabComponent } from './scroll-to-top-fab/scroll-to-top-fab.component';
 import { SearchBarComponent } from './search/search-bar/search-bar.component';
 import { SearchButtonComponent } from './search/search-button/search-button.component';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
@@ -45,7 +47,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
-import { SettingsComponent } from './settings/settings.component';
 import { ScrollService } from './shared/scroll.service';
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
@@ -71,10 +72,11 @@ import { ScrollService } from './shared/scroll.service';
         SpinnerComponent,
         EmptyGalleryComponent,
         SettingsComponent,
+        ScrollToTopFabComponent,
     ],
     imports: [
-        BrowserModule,
         BrowserAnimationsModule,
+        BrowserModule,
         CustomCovalentModule,
         CustomFirebaseModule,
         CustomMaterialModule,
@@ -98,13 +100,13 @@ import { ScrollService } from './shared/scroll.service';
         AuthService,
         ImageService,
         LoggedInGuard,
+        ScrollService,
         SetTitleOnRouteChangeService,
         SnackbarService,
+        SpinnerService,
         ToolbarService,
         UploadImageService,
         UserService,
-        SpinnerService,
-        ScrollService,
     ],
     bootstrap: [AppComponent]
 })
