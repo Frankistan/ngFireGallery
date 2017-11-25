@@ -1,5 +1,6 @@
 mat-nav-list .active {
-    color: #673AB7;
+    /* sidenav icon color */
+    color: #009688;
     font-weight: bold;
     background-color: rgba(0, 0, 0, .15);
 }

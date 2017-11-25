@@ -17,7 +17,7 @@ export class ScrollToTopFabComponent implements OnInit {
     }
 
     scrollToTop(){
-        this.htmlElement.scroll(0, 0);
+        this.htmlElement.scroll({ top: 0, left: 0, behavior: 'smooth' });
     }
 
 }

@@ -19,7 +19,8 @@
         "prefix": "app",
         "styles": [
             "styles.css",
-            "app/themes/theme.scss"
+            "app/themes/custom-theme.scss",
+            "app/flags.min.css"
         ],
         "scripts": [
             "../node_modules/moment/min/moment-with-locales.min.js"
