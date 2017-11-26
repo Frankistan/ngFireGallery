@@ -1,14 +1,24 @@
-// FUENTES: https://www.youtube.com/watch?v=kHbMm7psBag
+// FUENTES:
+// https://www.youtube.com/watch?v=kHbMm7psBag
 // https://coursetro.com/posts/code/116/Create-your-own-Angular-5-Material-Theme
 // https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html
+// https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1
 @import '~@angular/material/theming';
+@import './sidenav-list-theme';
 @include mat-core();
-// $custom-primary: mat-palette($mat-deep-purple, 500);
-// $custom-accent: mat-palette($mat-orange);
 $custom-primary: mat-palette($mat-teal, 500);
 $custom-accent: mat-palette($mat-lime);
-$custom-theme: mat-light-theme($custom-primary, $custom-accent);
+$custom-warn: mat-palette($mat-red);
+$custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+@mixin custom-theme($theme) {
+    @include ml-file-tree-theme($theme);
+}
+
 @include angular-material-theme($custom-theme);
+@include custom-theme($custom-theme);
+
+/* ALTERNATIVE THEME */
+
 $alt-primary: mat-palette($mat-indigo, 500);
 $alt-accent: mat-palette($mat-pink);
 $alt-theme: mat-dark-theme($alt-primary, $alt-accent);

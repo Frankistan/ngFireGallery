@@ -38,10 +38,6 @@ mat-sidenav {
     width: 240px;
 }
 
-mat-nav-list .mat-list-item-content {
-    color: rgb(17, 17, 17);
-}
-
 mat-nav-list .mat-icon {
     color: rgb(136, 136, 136);
     margin-right: 1.5rem;
@@ -50,10 +46,6 @@ mat-nav-list .mat-icon {
 mat-nav-list .mat-list-item.active {
     font-weight: bold;
     background-color: rgba(0, 0, 0, .05);
-}
-
-mat-nav-list .mat-list-item.active .mat-icon {
-    color: #673AB7;
 }
 
 mat-input-container.full-width-input {
