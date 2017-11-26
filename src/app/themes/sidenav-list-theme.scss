@@ -1,14 +1,21 @@
 @import '~@angular/material/theming';
-@mixin ml-file-tree-theme($theme) {
+@mixin sidenav-list-theme($theme) {
     $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
     $warn: map-get($theme, warn);
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
-    .mat-list-item.active {
-        color: mat-color($primary, default);
-    }
-    .mat-list-item.active .mat-icon {
-        color: mat-color($primary, default);
+    mat-nav-list {
+        [mat-list-item].active {
+            color: mat-color($primary, default);
+            mat-icon[mat-list-avatar] {
+                background-color: mat-color($primary);
+                color: mat-color($primary, default-contrast);
+            }
+            mat-icon {
+                color: mat-color($primary, default);
+            }
+        }
     }
     // .ml-file-list {
     //     border-bottom: 1px solid mat-color($foreground, divider);
