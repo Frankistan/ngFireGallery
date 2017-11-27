@@ -93,7 +93,8 @@ const routes: Routes = [
         }
     },
     {
-        path: 'user-profile', component: ProfileDetailsComponent, data: {
+        path: 'user-profile', component: ProfileDetailsComponent, canActivate: [AuthGuard],
+        data: {
             title: 'profile',
             animation: {
                 value: 'user-profile',
@@ -101,7 +102,8 @@ const routes: Routes = [
         }
     },
     {
-        path: 'settings', component: SettingsComponent, data: {
+        path: 'settings', component: SettingsComponent, canActivate: [AuthGuard],
+        data: {
             title: 'settings',
             animation: {
                 value: 'settings',

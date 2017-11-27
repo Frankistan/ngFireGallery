@@ -2,7 +2,7 @@
     <a routerLink="/user-profile">
         <div fxFlex fxLayoutAlign="center center" *ngIf="auth.user | async; let user;">
             <div fxFlex="25" fxLayoutAlign="center center">
-                <img class="mat-card-avatar" *ngIf="user.photoURL" [src]="user.photoURL">
+                <img class="mat-card-avatar sidenav-user-image" *ngIf="user.photoURL" [src]="user.photoURL">
                 <div class="mat-card-avatar header-image" *ngIf="!user.photoURL">
                     <mat-icon mat-24>account_circle</mat-icon>
                 </div>

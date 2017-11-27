@@ -13,6 +13,11 @@
             "title": "Cambia el tema actual",
             "description": "Elige entre tema oscuro o claro"
         },
+        "language": {
+            "title": "Cambia el idioma de la aplicación",
+            "description": "Selecciona idioma",
+            "input": "Idioma"
+        },
         "other": "Otros"
     },
     "title": {

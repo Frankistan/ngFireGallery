@@ -13,6 +13,12 @@
             "title": "Change the current theme",
             "description": "Choose between light and dark theme"
         },
+        "language": {
+            "title": "Change the language app",
+            "description": "Select language",
+            "input": "Language"
+        },
+
         "other": "Others"
     },
     "title": {

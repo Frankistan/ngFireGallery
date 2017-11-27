@@ -20,7 +20,8 @@ import { LoggedInGuard } from './guards/logged-in.guard';
 /* SERVICES */
 import { AuthService } from './shared/auth.service';
 import { ImageService } from './shared/image.service';
-import { SettingsComponent } from './settings/settings.component';
+import { ScrollService } from './shared/scroll.service';
+import { SettingsService } from './shared/settings.service';
 import { SetTitleOnRouteChangeService } from './shared/set-title-on-route-change.service';
 import { SnackbarService } from './shared/snackbar.service';
 import { SpinnerService } from './shared/spinner.service';
@@ -40,6 +41,7 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { ScrollToTopFabComponent } from './scroll-to-top-fab/scroll-to-top-fab.component';
 import { SearchBarComponent } from './search/search-bar/search-bar.component';
 import { SearchButtonComponent } from './search/search-button/search-button.component';
+import { SettingsComponent } from './settings/settings.component';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SortByComponent } from './sort-by/sort-by.component';
@@ -47,7 +49,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
-import { ScrollService } from './shared/scroll.service';
+
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
 
@@ -101,6 +103,7 @@ import { ScrollService } from './shared/scroll.service';
         ImageService,
         LoggedInGuard,
         ScrollService,
+        SettingsService,
         SetTitleOnRouteChangeService,
         SnackbarService,
         SpinnerService,

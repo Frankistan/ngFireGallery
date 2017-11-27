@@ -11,16 +11,6 @@ import { TranslateService } from '@ngx-translate/core';
 export class SidenavListComponent {
 
     constructor(
-        public auth: AuthService,
-        private router: Router,
-        private translate: TranslateService,
+        public auth: AuthService
     ) { }
-
-    toggleLanguage() {
-        let language = this.translate.currentLang == "es" ? "en" : "es";
-
-        this.translate.use(language).subscribe(() => {
-            localStorage.setItem('NGX_TRANSLATE', language);
-        });
-    }
 }

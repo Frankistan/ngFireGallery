@@ -48,10 +48,11 @@ mat-nav-list .mat-list-item.active {
     background-color: rgba(0, 0, 0, .05);
 }
 
-mat-input-container.full-width-input {
+
+/* mat-input-container.full-width-input {
     width: 100%;
     margin: 0.5rem 0;
-}
+} */
 
 .mat-card-no-margin {
     margin: 0 !important;

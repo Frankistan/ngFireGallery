@@ -19,6 +19,14 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
 @include angular-material-theme($custom-theme);
 @include custom-theme($custom-theme);
 
+/* CSS STYLES APPLIED TO CUSTOM THEMES*/
+
+mat-input-container.full-width-input {
+    width: 100% !important;
+    margin: 0.5rem 0;
+}
+
+
 /* Define an alternate DARK THEME*/
 
 $dark-primary: mat-palette($mat-blue-grey);

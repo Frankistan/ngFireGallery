@@ -2,6 +2,11 @@
     font-size: 3rem;
 }
 
+.sidenav-user-image {
+    height: 3rem;
+    width: 3rem;
+}
+
 .sidenav-toolbar {
     height: 108px !important;
     background-color: #00BBD3;

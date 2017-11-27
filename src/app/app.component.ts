@@ -6,6 +6,7 @@ import { ToolbarService } from './shared/toolbar.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ScrollTrackerEventData } from '@nicky-lenaers/ngx-scroll-tracker';
 import { ScrollService } from './shared/scroll.service';
+import { SettingsService } from './shared/settings.service';
 
 @Component({
     selector: 'app-root',
@@ -24,7 +25,11 @@ export class AppComponent implements OnInit {
         public auth: AuthService,
         public toolbarSrv: ToolbarService,
         private scrollSrv:ScrollService,
+        public settingsSrv:SettingsService,
     ) {
+        // Load the theme predefined by user settings
+        let isDark = JSON.parse(localStorage.getItem('settings')).isDark;
+        this.settingsSrv.darkTheme.next(isDark);
 
         // Setting default lang that will be used as a fallback when a translation isn't found in the current language
         translate.setDefaultLang('es');

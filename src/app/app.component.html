@@ -1,76 +1,67 @@
-<mat-toolbar [color]="(toolbarSrv.isSearching|async) ? '': 'primary'" (click)="sidenav.close()">
+<div [class.alternative]="settingsSrv.darkTheme|async">
+    <mat-toolbar [color]="(toolbarSrv.isSearching|async) ? '': 'primary'" (click)="sidenav.close()">
 
-    <button mat-icon-button (click)="sidenav.toggle()" *ngIf="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
-        <mat-icon>menu</mat-icon>
-    </button>
-
-    <a *ngIf="!(toolbarSrv.isSearching|async)" class="main-toolbar-title" routerLink="/">
-        {{ title|async|translate }}
-    </a>
-    <!-- <span style="flex: 1 1 auto;"></span> -->
-    <span fxFlex></span>
-
-    <div fxFlexLayout="row" fxFlex="100">
-        <app-search-bar></app-search-bar>
-    </div>
-
-    <ng-template [ngIf]="!(auth.isAuthenticated | async)">
-        <button mat-icon-button [matMenuTriggerFor]="langMenu">
-            <mat-icon>language</mat-icon>
+        <button mat-icon-button (click)="sidenav.toggle()" *ngIf="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
+            <mat-icon>menu</mat-icon>
         </button>
-        <mat-menu #langMenu="matMenu">
-            <button mat-menu-item (click)="switchLanguage('es')">
-                <img class="flag flag-es"  />
-                Español
-            </button>
 
-            <button mat-menu-item (click)="switchLanguage('en')">
-                <img class="flag flag-us"  />
-                English
-            </button>
-        </mat-menu>
-
-        <a fxHide.xs="true" mat-button (click)="sidenav.close()" routerLinkActive="active" routerLink="/login">
-            {{ 'main.sidenav.login' | translate }}
+        <a *ngIf="!(toolbarSrv.isSearching|async)" class="main-toolbar-title" routerLink="/">
+            {{ title|async|translate }}
         </a>
-        <button routerLink="/login" fxHide.gt-xs="true" mat-icon-button>
-            <mat-icon aria-label="iniciar sesion">account_circle</mat-icon>
-        </button>
-    </ng-template>
 
-    <app-search-button></app-search-button>
+        <span fxFlex></span>
 
-    <!-- <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
-        <button mat-icon-button [matMenuTriggerFor]="appMenu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #appMenu="matMenu">
-            <a fxHide.gt-xs="true" mat-menu-item (click)="sidenav.close()" routerLink="/images">
-                <span>{{ 'main.sidenav.gallery' | translate }}</span>
+        <div fxFlexLayout="row" fxFlex="100">
+            <app-search-bar></app-search-bar>
+        </div>
+
+        <ng-template [ngIf]="!(auth.isAuthenticated | async)">
+            <button mat-icon-button [matMenuTriggerFor]="langMenu">
+                <mat-icon>language</mat-icon>
+            </button>
+            <mat-menu #langMenu="matMenu">
+                <button mat-menu-item (click)="switchLanguage('es')">
+                    <img class="flag flag-es"  />
+                    Español
+                </button>
+
+                <button mat-menu-item (click)="switchLanguage('en')">
+                    <img class="flag flag-us"  />
+                    English
+                </button>
+            </mat-menu>
+
+            <a fxHide.xs="true" mat-button (click)="sidenav.close()" routerLinkActive="active" routerLink="/login">
+                {{ 'main.sidenav.login' | translate }}
             </a>
-            <button mat-menu-item (click)="auth.logout();sidenav.close()"> {{ 'main.sidenav.logout' | translate }} </button>
-        </mat-menu>
-        </ng-template> -->
-    <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
-        <app-sort-by></app-sort-by>
-    </ng-template>
-</mat-toolbar>
+            <button routerLink="/login" fxHide.gt-xs="true" mat-icon-button>
+                <mat-icon aria-label="iniciar sesion">account_circle</mat-icon>
+            </button>
+        </ng-template>
 
-<mat-sidenav-container>
-    <mat-sidenav #sidenav mode="over" fullscreen (click)="sidenav.close()">
-        <app-profile-info></app-profile-info>
-        <app-sidenav-list></app-sidenav-list>
-    </mat-sidenav>
+        <app-search-button></app-search-button>
 
-    <!-- <div class="container" fxLayoutAlign="center">
-        <router-outlet #outlet="outlet"></router-outlet>
-    </div> -->
-    <!-- USAR ESTO SI EN LA ANIMACION DE CAMBIO DE PAGINAS DA ERROR O ANIMA DE FORMA EXTRAÑA -->
+        <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
+            <app-sort-by></app-sort-by>
+        </ng-template>
+    </mat-toolbar>
 
-    <div class="container" (ngx-scroll-tracker)="scrollHandler($event)">
-        <app-spinner></app-spinner>
-        <router-outlet #outlet="outlet"></router-outlet>
-        <scroll-to-top-fab [htmlElement]="scrollableElement"></scroll-to-top-fab>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav mode="over" fullscreen (click)="sidenav.close()">
+            <app-profile-info></app-profile-info>
+            <app-sidenav-list></app-sidenav-list>
+        </mat-sidenav>
 
-    </div>
-</mat-sidenav-container>
+        <!-- <div class="container" fxLayoutAlign="center">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </div> -->
+        <!-- USAR ESTO SI EN LA ANIMACION DE CAMBIO DE PAGINAS DA ERROR O ANIMA DE FORMA EXTRAÑA -->
+
+        <div class="container" (ngx-scroll-tracker)="scrollHandler($event)">
+            <app-spinner></app-spinner>
+            <router-outlet #outlet="outlet"></router-outlet>
+            <scroll-to-top-fab [htmlElement]="scrollableElement"></scroll-to-top-fab>
+
+        </div>
+    </mat-sidenav-container>
+</div>

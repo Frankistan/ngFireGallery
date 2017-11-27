@@ -13,7 +13,8 @@ import {
     MatListModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSelectModule,
 } from '@angular/material';
 
 import { PlatformModule } from '@angular/cdk/platform';
@@ -33,7 +34,8 @@ const MaterialModule = [
     MatListModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSelectModule,
 ];
 
 @NgModule({

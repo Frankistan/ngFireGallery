@@ -20,11 +20,6 @@
         <mat-icon mdListIcon>settings</mat-icon>
         {{ 'main.sidenav.settings' | translate }}
     </a>
-    <a mat-list-item (click)="toggleLanguage()" routerLinkActive="active">
-        <mat-icon mdListIcon>language</mat-icon>
-        {{ 'main.sidenav.change_language' | translate }}
-    </a>
-
     <a mat-list-item (click)="auth.logout();">
         <mat-icon mdListIcon>power_settings_new</mat-icon>
         {{ 'main.sidenav.logout' | translate }}
