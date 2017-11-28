@@ -3,7 +3,6 @@
         <a [routerLink]="['/images', image.id]">
             <mat-card class="image-list-card">
                 <mat-card-header>
-                    <div mat-card-avatar></div>
                     <mat-card-title>{{ image.name }}</mat-card-title>
                 </mat-card-header>
                 <img mat-card-image [src]="image.url" alt="image">

@@ -88,8 +88,6 @@
         },
         "search": "Buscar...",
         "sidenav": {
-            "change_language": "Cambiar idioma",
-            "dashboard": "Escritorio",
             "favorites": "Favoritas",
             "gallery": "Galería",
             "home": "Inicio",
@@ -98,16 +96,6 @@
             "settings": "Ajustes",
             "signup": "Regístrate",
             "upload": "Subir imágenes"
-        },
-        "toolbar": {
-            "gallery_button": "Galería",
-            "logIn_button": "Inicia Sesión",
-            "signUp_button": "Regístrate",
-            "sort": {
-                "by_title": "Por Titulo",
-                "by_id": "Por ID",
-                "by_date": "Por Fecha"
-            }
         }
     },
     "auth": {
@@ -127,32 +115,9 @@
         "register": {
             "button": "Unirme"
         },
-        "t": {
-            "signup": "Regístrate",
-            "login": "Inicia Sesión",
-            "forgotPwd": "Recuperar Contraseña",
-            "resetPwd": "Resetear Contraseña"
-        },
-        "b": {
-            "signup": "Enviar",
-            "login": "Entrar",
-            "recovery_password": "Olvidé mi contraseña",
-            "continue": "Continuar"
-        },
-        "switch": "mantenme conectado",
-        "l": {
-            "email": "Correo electrónico",
-            "name": "Nombre",
-            "password": "Contraseña",
-            "password_confirm": "Confirma contraseña"
-        },
         "reset_pwd": {
             "title": "Para resetar tu contraseña, introduce el email que usas para entrar en NgGallery.",
             "button": "Enviar"
-        },
-        "resetPwd": {
-            "title": "Introduce y confirma la nueva contraseña asociada a tu email",
-            "button": "Guardar cambios"
         }
     },
     "image": {
@@ -168,31 +133,12 @@
         "label": "selecciona o suelta imágenes aquí",
         "progress": "Progreso: {{progress}} % Completado"
     },
-    "notes": {
-        "t": {
-            "edit": "Editar nota",
-            "create": "Crear nota"
-        },
-        "b": {
-            "edit": "Editar",
-            "create": "Guardar",
-            "list_delete": "Borrar",
-            "list_edit": "Editar"
-        },
-        "l": {
-            "title": "Título",
-            "content": "Contenido"
-        }
-    },
     "empty_images": {
         "title": "Oops, No hay imágenes en esta galería!",
         "subtitle": "Pulsa el botón de la esquina inferior para subir alguna"
     },
     "profile": {
         "lastLogin": "Última conexión",
-        "t": {
-            "profile": "Perfil"
-        },
         "input": {
             "new_password": "Nueva contraseña",
             "new_password_confirm": "Confirma nueva contraseña"
@@ -200,12 +146,6 @@
         "b": {
             "save_changes": "Guardar Cambios",
             "change_password": "Cambiar contraseña"
-        },
-        "l": {
-            "email": "Correo electrónico",
-            "name": "Nombre",
-            "password": "Contraseña",
-            "password_confirm": "Confirma contraseña"
         }
     }
 }

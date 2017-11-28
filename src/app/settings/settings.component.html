@@ -10,8 +10,8 @@
                     <h4 matLine> {{ 'settings.appearance.title' | translate }} </h4>
                     <p matLine> {{ 'settings.appearance.description' | translate }}</p>
                     <span fxLayoutAlign="space-between">
-                        <mat-icon>brightness_5</mat-icon>
-                        <mat-slide-toggle [(ngModel)]="checked" (change)="switchTheme($event)"></mat-slide-toggle>
+                        <mat-icon style="margin-right: 0.5rem;">brightness_5</mat-icon>
+                        <mat-slide-toggle  [(ngModel)]="checked" (change)="switchTheme($event)"></mat-slide-toggle>
                         <mat-icon>brightness_3</mat-icon>
                     </span>
                 </mat-list-item>

@@ -90,8 +90,6 @@
         },
         "search": "Search...",
         "sidenav": {
-            "change_language": "Change language",
-            "dashboard": "Dashboard",
             "favorites": "Favorites",
             "gallery": "Gallery",
             "home": "Home",
@@ -100,16 +98,6 @@
             "settings": "Settings",
             "signup": "Sign Up",
             "upload": "Upload images"
-        },
-        "toolbar": {
-            "gallery_button": "Gallery",
-            "logIn_button": "Login",
-            "signUp_button": "Sign Up",
-            "sort": {
-                "by_title": "By Title",
-                "by_id": "By ID",
-                "by_date": "By Date"
-            }
         }
     },
     "auth": {
@@ -129,32 +117,9 @@
         "register": {
             "button": "Join in"
         },
-        "t": {
-            "signup": "Sign Up",
-            "login": "Login",
-            "forgotPwd": "Forgot password",
-            "resetPwd": "Reset password"
-        },
-        "b": {
-            "signup": "Join in",
-            "login": "Enter",
-            "recovery_password": "Recover my Password",
-            "continue": "Continue"
-        },
-        "switch": "keep me signed in",
-        "l": {
-            "email": "Email",
-            "name": "Name",
-            "password": "Password",
-            "password_confirm": "Repeat Password"
-        },
         "reset_pwd": {
             "title": "To reset your password, enter the email address you use to sign in to NgGallery.",
             "button": "Send"
-        },
-        "resetPwd": {
-            "title": "Enter and confirm the new email's associated password",
-            "button": "Save changes"
         }
     },
     "image": {
@@ -170,31 +135,12 @@
         "label": "select or drop files here",
         "progress": "Progress: {{progress}} % Complete"
     },
-    "notes": {
-        "t": {
-            "edit": "Edit note",
-            "create": "Create note"
-        },
-        "b": {
-            "edit": "Edit",
-            "create": "Save",
-            "list_delete": "Delete",
-            "list_edit": "Edit"
-        },
-        "l": {
-            "title": "Title",
-            "content": "Content"
-        }
-    },
     "empty_images": {
         "title": "Oops, there are no images in this gallery!",
         "subtitle": "Hit the bottom right button to upload some"
     },
     "profile": {
         "lastLogin": "Last login",
-        "t": {
-            "profile": "Profile"
-        },
         "input": {
             "new_password": "New password",
             "new_password_confirm": "Confirm new password"
@@ -202,12 +148,6 @@
         "b": {
             "save_changes": "Save changes",
             "change_password": "Change password"
-        },
-        "l": {
-            "email": "Email",
-            "name": "Name",
-            "password": "Password",
-            "password_confirm": "Confirm Password"
         }
     }
 }

@@ -54,7 +54,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
             case (x < 1919): this.cols = 5; // 'screen and (min-width: 1280px) and (max-width: 1919px)'
                 break;
         };
-
+        // https://youtu.be/w9InzT-SdIE?t=6m20s
         this.watcher = media.asObservable().subscribe((change: MediaChange) => {
 
             switch (change.mqAlias) {
