@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
         public settingsSrv:SettingsService,
     ) {
         // Load the theme predefined by user settings
-        let isDark = JSON.parse(localStorage.getItem('settings')).isDark;
+        let isDark = localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')).isDark : false;
         this.settingsSrv.darkTheme.next(isDark);
 
         // Setting default lang that will be used as a fallback when a translation isn't found in the current language

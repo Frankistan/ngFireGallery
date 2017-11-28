@@ -21,8 +21,8 @@ export class SettingsComponent {
         private settingsSrv: SettingsService,
         private translate: TranslateService,
     ) {
-        let isDark = JSON.parse(localStorage.getItem('settings')).isDark;
-        this.checked = isDark;
+
+        this.checked =  localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')).isDark : false;
     }
 
     switchTheme(event: MatSlideToggleChange) {
