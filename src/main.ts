@@ -5,6 +5,10 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import 'hammerjs';
 
+declare global {
+    interface Window { ng2recaptchaloaded: any; }
+}
+
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';

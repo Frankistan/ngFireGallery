@@ -20,6 +20,7 @@ import { LoggedInGuard } from './guards/logged-in.guard';
 /* SERVICES */
 import { AuthService } from './shared/auth.service';
 import { ImageService } from './shared/image.service';
+import { RecaptchaDynamicLanguageLoaderService } from './shared/recaptcha-dynamic-language-loader.service';
 import { ScrollService } from './shared/scroll.service';
 import { SettingsService } from './shared/settings.service';
 import { SetTitleOnRouteChangeService } from './shared/set-title-on-route-change.service';
@@ -110,6 +111,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         ToolbarService,
         UploadImageService,
         UserService,
+        RecaptchaDynamicLanguageLoaderService,
     ],
     bootstrap: [AppComponent]
 })
