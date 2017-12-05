@@ -9,20 +9,14 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class ImageService {
-
-    imagesCollection: AngularFirestoreCollection<Image>;
-    images: Observable<Image[]>;
-    image: Observable<Image>;
-
-    userId: string = null;
-
-    query = new BehaviorSubject<any>(null);
-
     filter: any = null;
-
+    image: Observable<Image>;
+    images: Observable<Image[]>;
+    imagesCollection: AngularFirestoreCollection<Image>;
+    query = new BehaviorSubject<any>(null);
     search: BehaviorSubject<any> = new BehaviorSubject<any>({ name: "" });
-    sortBy: BehaviorSubject<{}> = new BehaviorSubject({ sortBy: 'createdAt',order: ''});
-    // order: BehaviorSubject<string> = new BehaviorSubject('');
+    sortBy: BehaviorSubject<{}> = new BehaviorSubject({ sortBy: 'createdAt', order: '' });
+    userId: string = null;
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -39,17 +33,7 @@ export class ImageService {
                 this.imagesCollection = this.afs.doc(`images/${user.uid}`)
                     .collection('album', ref => ref.orderBy('createdAt', 'asc'));
 
-                    this.images = this.imagesCollection.valueChanges();
-                // FUENTE: https://www.youtube.com/watch?v=cwqeyOFcaoA
-                // this.images = this.imagesCollection.snapshotChanges()
-                //                 .map(changes => {
-                //                     return changes.map(a => {
-                //                         const data = a.payload.doc.data() as Image;
-                //                         data.id = a.payload.doc.id;
-                //                         data.originalName = data.name.split("_")[2];
-                //                         return data;
-                //                     });
-                //                 });
+                this.images = this.imagesCollection.valueChanges();
             }
         });
     }
@@ -57,19 +41,17 @@ export class ImageService {
     list(): Observable<Image[]> {
         if (!this.userId) return;
 
-        if (this.filter != null) {
+        this.imagesCollection = this.afs.doc(`images/${this.userId}`)
+            .collection('album', ref => {
+                if (this.filter) {
+                    return ref.orderBy('createdAt', 'desc')
+                        .where(this.filter.part1, this.filter.op, this.filter.part2);
+                } else {
+                    return ref.orderBy('createdAt', 'desc');
+                }
+            });
 
-            this.imagesCollection = this.afs.doc(`images/${this.userId}`)
-                .collection('album', ref =>
-                    ref.orderBy('createdAt', 'desc')
-                        .where(this.filter.part1, this.filter.op, this.filter.part2)
-                );
-        }
-        else {
-            this.imagesCollection = this.afs.doc(`images/${this.userId}`)
-                .collection('album', ref => ref.orderBy('createdAt', 'desc'));
-        }
-
+        // FUENTE: https://www.youtube.com/watch?v=cwqeyOFcaoA
         this.images = this.imagesCollection.snapshotChanges().map(changes => {
             return changes.map(a => {
                 const data = a.payload.doc.data() as Image;
@@ -77,8 +59,6 @@ export class ImageService {
                 return data;
             });
         });
-
-        // this.query.next(null);
 
         return this.images;
     }
@@ -100,7 +80,7 @@ export class ImageService {
         return this.image;
     }
 
-    update(image: Image):Promise<any> {
+    update(image: Image): Promise<any> {
         const imageDoc = this.afs.doc<Image>(`images/${this.userId}/album/${image.id}`);
 
         return imageDoc.update(image);
