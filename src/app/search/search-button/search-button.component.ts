@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { SetTitleOnRouteChangeService } from '../../shared/set-title-on-route-change.service';
-import { ToolbarService } from '../../shared/toolbar.service';
+import { CoreService } from './../../shared/core.service';
 
 @Component({
   selector: 'app-search-button',
@@ -12,17 +11,16 @@ export class SearchButtonComponent  {
     isSearching: boolean = false;
 
     constructor(
-        private setTitleService: SetTitleOnRouteChangeService,
-        public toolbarSrv: ToolbarService,
+        public coreSrv:CoreService,
     ) {
-      this.setTitleService.currentPath.subscribe((path) => {
+      this.coreSrv.currentPath.subscribe((path) => {
           this.displaySearchBtn = path === "images";
       });
    }
 
     openSearch() {
         this.isSearching = true;
-        this.toolbarSrv.isSearching.next(this.isSearching);
+        this.coreSrv.isSearching.next(this.isSearching);
     }
 
 }

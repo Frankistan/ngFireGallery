@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SpinnerService } from '../shared/spinner.service';
+import { CoreService } from './../shared/core.service';
 
 @Component({
     selector: 'app-spinner',
@@ -9,9 +9,8 @@ import { SpinnerService } from '../shared/spinner.service';
 export class SpinnerComponent {
     display: boolean = false;
 
-    constructor(spinnerSrv: SpinnerService,
-    ) {
-        spinnerSrv.display.subscribe(mode => this.display = mode);
+    constructor(private coreSrv:CoreService) {
+        coreSrv.displaySpinner.subscribe(mode => this.display = mode);
     }
 
 }

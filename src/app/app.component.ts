@@ -1,12 +1,9 @@
+import { CoreService } from './shared/core.service';
 import { Component, OnInit, EventEmitter, NgZone, Inject } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { SetTitleOnRouteChangeService } from './shared/set-title-on-route-change.service';
-import { ToolbarService } from './shared/toolbar.service';
 import { TranslateService, DefaultLangChangeEvent } from '@ngx-translate/core';
 import { ScrollTrackerEventData } from '@nicky-lenaers/ngx-scroll-tracker';
-import { ScrollService } from './shared/scroll.service';
-import { SettingsService } from './shared/settings.service';
 import { RecaptchaDynamicLanguageLoaderService } from './shared/recaptcha-dynamic-language-loader.service';
 import { RecaptchaLoaderService } from 'ng-recaptcha';
 
@@ -21,16 +18,10 @@ export class AppComponent implements OnInit {
     scrollableElement = null;
     offSet: number = 240;
 
-    // loaderReady = false;
-    // private _lang: string;
-
     constructor(
-        private setTitleService: SetTitleOnRouteChangeService,
         private translate: TranslateService,
         public auth: AuthService,
-        public toolbarSrv: ToolbarService,
-        private scrollSrv: ScrollService,
-        public settingsSrv: SettingsService,
+        public coreSrv:CoreService,
         @Inject(RecaptchaLoaderService) private loader: RecaptchaDynamicLanguageLoaderService,
         private zone: NgZone,
     ) {
@@ -41,7 +32,7 @@ export class AppComponent implements OnInit {
 
         // Load the theme predefined by user settings
         let isDark = localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')).isDark : false;
-        this.settingsSrv.darkTheme.next(isDark);
+        this.coreSrv.darkTheme.next(isDark);
 
         // Setting default lang that will be used as a fallback when a translation isn't found in the current language
         translate.setDefaultLang('es');
@@ -55,7 +46,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.title = this.setTitleService.title;
+        this.title = this.coreSrv.title;
     }
 
     scrollHandler(eventData: ScrollTrackerEventData) {
@@ -64,9 +55,9 @@ export class AppComponent implements OnInit {
 
         if (scroll > this.scrollPosition && this.scrollPosition > this.offSet) {
 
-            this.scrollSrv.scrolling.next('down');
+            this.coreSrv.scrolling.next('down');
         } else {
-            this.scrollSrv.scrolling.next('up');
+            this.coreSrv.scrolling.next('up');
             if (eventData.$event.srcElement) {
                 this.scrollableElement = eventData.$event.srcElement;
             }

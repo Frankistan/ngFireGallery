@@ -1,5 +1,5 @@
+import { CoreService } from './../shared/core.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { ScrollService } from '../shared/scroll.service';
 
 @Component({
     selector: 'scroll-to-top-fab',
@@ -10,7 +10,7 @@ export class ScrollToTopFabComponent implements OnInit {
     @Input() htmlElement;
 
     constructor(
-        public scrollSrv: ScrollService,
+        public coreSrv:CoreService,
     ) { }
 
     ngOnInit() {

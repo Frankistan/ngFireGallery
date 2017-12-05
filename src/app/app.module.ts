@@ -19,14 +19,10 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoggedInGuard } from './guards/logged-in.guard';
 /* SERVICES */
 import { AuthService } from './shared/auth.service';
+import { CoreService } from './shared/core.service';
 import { ImageService } from './shared/image.service';
 import { RecaptchaDynamicLanguageLoaderService } from './shared/recaptcha-dynamic-language-loader.service';
-import { ScrollService } from './shared/scroll.service';
-import { SettingsService } from './shared/settings.service';
-import { SetTitleOnRouteChangeService } from './shared/set-title-on-route-change.service';
 import { SnackbarService } from './shared/snackbar.service';
-import { SpinnerService } from './shared/spinner.service';
-import { ToolbarService } from './shared/toolbar.service';
 import { UploadImageService } from './shared/upload-image.service';
 import { UserService } from './shared/user.service';
 /* COMPONENTS */
@@ -59,6 +55,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         AppComponent,
         AutofocusDirective,
         DeleteImageDialogComponent,
+        EmptyGalleryComponent,
         ImageDetailComponent,
         ImageListComponent,
         ImageUploadComponent,
@@ -66,16 +63,15 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         ProfileDetailsComponent,
         ProfileInfoComponent,
         ResetPasswordComponent,
+        ScrollToTopFabComponent,
+        SearchBarComponent,
+        SearchButtonComponent,
+        SettingsComponent,
         SidenavListComponent,
         SignupComponent,
-        WelcomeComponent,
         SortByComponent,
-        SearchButtonComponent,
-        SearchBarComponent,
         SpinnerComponent,
-        EmptyGalleryComponent,
-        SettingsComponent,
-        ScrollToTopFabComponent,
+        WelcomeComponent,
     ],
     imports: [
         BrowserAnimationsModule,
@@ -101,17 +97,13 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
     providers: [
         AuthGuard,
         AuthService,
+        CoreService,
         ImageService,
         LoggedInGuard,
-        ScrollService,
-        SettingsService,
-        SetTitleOnRouteChangeService,
+        RecaptchaDynamicLanguageLoaderService,
         SnackbarService,
-        SpinnerService,
-        ToolbarService,
         UploadImageService,
         UserService,
-        RecaptchaDynamicLanguageLoaderService,
     ],
     bootstrap: [AppComponent]
 })

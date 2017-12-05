@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
-import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Injectable()
-export class SetTitleOnRouteChangeService {
-
-    title: BehaviorSubject<string> = new BehaviorSubject('');
-    currentPath: BehaviorSubject<any> = new BehaviorSubject(null);
+export class CoreService {
+    currentPath: BehaviorSubject<string> = new BehaviorSubject("");
+    darkTheme: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    displaySpinner: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    isSearching: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    scrolling: BehaviorSubject<string> = new BehaviorSubject("up");
+    title: BehaviorSubject<string> = new BehaviorSubject("");
     titleTranslationKey: string = "title.app";
 
     constructor(
+        private translate: TranslateService,
+        private titleService: Title,
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private titleService: Title,
-        private translate: TranslateService,
     ) {
         translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this.translate.get(this.titleTranslationKey).subscribe((res: string) => {
@@ -51,12 +54,5 @@ export class SetTitleOnRouteChangeService {
                 });
             });
     }
-}
 
-// GET current route url
-// FUENTE: https://stackoverflow.com/questions/43360625/what-is-the-easiest-way-to-get-current-route-path-name-in-angular-4
-// this.router.events.subscribe((event) => {
-//     if (event instanceof NavigationEnd) {
-//         this.currentUrl = event.url;
-//     }
-// });
+}

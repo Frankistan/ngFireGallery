@@ -1,7 +1,6 @@
+import { CoreService } from './../../shared/core.service';
 import { Component } from '@angular/core';
-import { SetTitleOnRouteChangeService } from '../../shared/set-title-on-route-change.service';
 import { ImageService } from '../../shared/image.service';
-import { ToolbarService } from '../../shared/toolbar.service';
 
 
 @Component({
@@ -14,11 +13,10 @@ export class SearchBarComponent {
     isSearching: boolean = false;
 
     constructor(
-        private setTitleService: SetTitleOnRouteChangeService,
         private imageSrv: ImageService,
-        private toolbarSrv: ToolbarService,
+        private coreSrv:CoreService,
     ) {
-        this.toolbarSrv.isSearching.subscribe((searching) => {
+        this.coreSrv.isSearching.subscribe((searching) => {
             this.isSearching = searching;
         })
     }
@@ -29,7 +27,7 @@ export class SearchBarComponent {
 
     closeSearch() {
         this.isSearching = false;
-        this.toolbarSrv.isSearching.next(this.isSearching);
+        this.coreSrv.isSearching.next(this.isSearching);
         this.imageSrv.search.next({ name: "" });
     }
 }

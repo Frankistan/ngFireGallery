@@ -1,6 +1,6 @@
+import { CoreService } from './../shared/core.service';
 import { Component } from '@angular/core';
 import { MatSlideToggleChange, MatSelectChange } from '@angular/material';
-import { SettingsService } from '../shared/settings.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -18,7 +18,7 @@ export class SettingsComponent {
     ];
 
     constructor(
-        private settingsSrv: SettingsService,
+        private coreSrv:CoreService,
         private translate: TranslateService,
     ) {
 
@@ -26,7 +26,7 @@ export class SettingsComponent {
     }
 
     switchTheme(event: MatSlideToggleChange) {
-        this.settingsSrv.darkTheme.next(event.checked);
+        this.coreSrv.darkTheme.next(event.checked);
         let settings = {
             "isDark": event.checked
         }

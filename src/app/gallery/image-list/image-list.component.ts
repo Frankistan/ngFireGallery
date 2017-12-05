@@ -1,3 +1,4 @@
+import { CoreService } from './../../shared/core.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ImageService } from '../../shared/image.service';
@@ -6,8 +7,6 @@ import { Image } from '../../models/image';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { SpinnerService } from '../../shared/spinner.service';
-import { ScrollService } from '../../shared/scroll.service';
 
 @Component({
     selector: 'app-image-list',
@@ -33,8 +32,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
         public media: ObservableMedia,
         private router: Router,
         private route: ActivatedRoute,
-        public spinnerSrv:SpinnerService,
-        public scrollSrv: ScrollService,
+        public coreSrv:CoreService,
     ) {
 
         let w = window,
@@ -92,7 +90,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.display = "flex";
-        this.spinnerSrv.display.next(true);
+        this.coreSrv.displaySpinner.next(true);
 
         this.subscription = this.imageService.list().subscribe(images => {
             this.images =images;
@@ -103,13 +101,13 @@ export class ImageListComponent implements OnInit, OnDestroy {
             else {
                 this.display = "none";
             }
-            this.spinnerSrv.display.next(false);
+            this.coreSrv.displaySpinner.next(false);
         });
     }
 
     ngOnDestroy() {
         this.watcher.unsubscribe();
-        this.spinnerSrv.display.next(false);
+        this.coreSrv.displaySpinner.next(false);
         if (this.subscription)
             this.subscription.unsubscribe();
     }

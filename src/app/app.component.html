@@ -1,11 +1,11 @@
-<div [class.alternative]="settingsSrv.darkTheme|async">
-    <mat-toolbar [color]="(toolbarSrv.isSearching|async) ? '': 'primary'" (click)="sidenav.close()">
+<div [class.alternative]="coreSrv.darkTheme|async">
+    <mat-toolbar [color]="(coreSrv.isSearching|async) ? '': 'primary'" (click)="sidenav.close()">
 
-        <button mat-icon-button (click)="sidenav.toggle()" *ngIf="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
+        <button mat-icon-button (click)="sidenav.toggle()" *ngIf="(auth.isAuthenticated | async) && !(coreSrv.isSearching|async)">
             <mat-icon>menu</mat-icon>
         </button>
 
-        <a *ngIf="!(toolbarSrv.isSearching|async)" class="main-toolbar-title" routerLink="/">
+        <a *ngIf="!(coreSrv.isSearching|async)" class="main-toolbar-title" routerLink="/">
             {{ title|async|translate }}
         </a>
 
@@ -41,7 +41,7 @@
 
         <app-search-button></app-search-button>
 
-        <ng-template [ngIf]="(auth.isAuthenticated | async) && !(toolbarSrv.isSearching|async)">
+        <ng-template [ngIf]="(auth.isAuthenticated | async) && !(coreSrv.isSearching|async)">
             <app-sort-by></app-sort-by>
         </ng-template>
     </mat-toolbar>
