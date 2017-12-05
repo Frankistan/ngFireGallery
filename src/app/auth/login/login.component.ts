@@ -4,10 +4,10 @@ import { AuthService } from './../../shared/auth.service';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../shared/snackbar.service';
 import { environment } from '../../../environments/environment';
-import { DefaultLangChangeEvent, TranslateService } from '@ngx-translate/core';
-import {  RecaptchaDynamicLanguageLoaderService } from '../../shared/recaptcha-dynamic-language-loader.service';
-import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaLoaderService } from 'ng-recaptcha';
-export declare var grecaptcha: any;
+import { TranslateService } from '@ngx-translate/core';
+import { RecaptchaDynamicLanguageLoaderService } from '../../shared/recaptcha-dynamic-language-loader.service';
+import { RecaptchaLoaderService } from 'ng-recaptcha';
+
 
 @Component({
     selector: 'app-login',
@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     clientKey: string = environment.recaptcha.clientKey;
     loaderReady = false;
-    private _lang:string;
 
     constructor(
         public auth: AuthService,
@@ -35,36 +34,29 @@ export class LoginComponent implements OnInit {
             password: ['123456', Validators.required],
             recaptcha: [null, Validators.required]
         });
-
-        this._lang = this.loader.language;
-
-        this.translate.onDefaultLangChange.subscribe((event: DefaultLangChangeEvent) => {
-
-            this.loader.updateLanguage(this.translate.currentLang);
-        });
     }
 
     ngOnInit() {
         this.loader.ready.subscribe(v => {
+            this.loginForm.get('recaptcha').reset();
             this.zone.run(() => this.loaderReady = !!v);
-            console.log(`ready: ${this.loaderReady}`);
         });
     }
 
     login() {
         const inputValue = this.loginForm.value;
         this.auth.login(inputValue.email, inputValue.password)
-        .subscribe(
+            .subscribe(
             success => {
                 this.router.navigate(['/images']);
             },
             error => {
-                this.snackBar.open('toast.serverResponse.'+error.code, 'toast.close');
+                this.snackBar.open('toast.serverResponse.' + error.code, 'toast.close');
             }
-        );
+            );
     }
 
-    socialLogin(provider:string){
+    socialLogin(provider: string) {
         this.auth.loginWithProvider(provider)
             .then(success => { this.router.navigate(['/images']); })
             .catch(error => { this.snackBar.open('toast.serverResponse.' + error.code, 'toast.close'); });
