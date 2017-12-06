@@ -45,9 +45,8 @@ export class AuthService {
             });
     }
 
-    login(email: string, password: string): Observable<Promise<any>> {
-        // this.socialLogin.next(false);
-        return Observable.fromPromise(this.afAuth.auth.signInWithEmailAndPassword(email, password));
+    login(email: string, password: string): Promise<any> {
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password);
     }
 
     signup(user: any = {}) {

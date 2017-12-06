@@ -4,7 +4,6 @@ import { AuthService } from './../../shared/auth.service';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../shared/snackbar.service';
 import { environment } from '../../../environments/environment';
-import { TranslateService } from '@ngx-translate/core';
 import { RecaptchaDynamicLanguageLoaderService } from '../../shared/recaptcha-dynamic-language-loader.service';
 import { RecaptchaLoaderService } from 'ng-recaptcha';
 
@@ -25,7 +24,6 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private snackBar: SnackbarService,
-        private translate: TranslateService,
         @Inject(RecaptchaLoaderService) private loader: RecaptchaDynamicLanguageLoaderService,
         private zone: NgZone,
     ) {
@@ -46,20 +44,19 @@ export class LoginComponent implements OnInit {
     login() {
         const inputValue = this.loginForm.value;
         this.auth.login(inputValue.email, inputValue.password)
-            .subscribe(
-            success => {
-                this.router.navigate(['/images']);
-            },
-            error => {
-                this.snackBar.open('toast.serverResponse.' + error.code, 'toast.close');
-            }
-            );
+            .then(() => this.router.navigate(['/images']))
+            .catch(error => this.errorHandler(error.code));
+
     }
 
     socialLogin(provider: string) {
         this.auth.loginWithProvider(provider)
             .then(success => { this.router.navigate(['/images']); })
-            .catch(error => { this.snackBar.open('toast.serverResponse.' + error.code, 'toast.close'); });
+            .catch(error => this.errorHandler(error.code));
+    }
+
+    private errorHandler(error: any) {
+        this.snackBar.open('toast.serverResponse.' + error, 'toast.close');
     }
 
 }

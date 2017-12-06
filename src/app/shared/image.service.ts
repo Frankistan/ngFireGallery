@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { Image } from '../models/image';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable()
 export class ImageService {
@@ -21,6 +22,7 @@ export class ImageService {
     constructor(
         private afAuth: AngularFireAuth,
         private afs: AngularFirestore,
+        private snackBar: SnackbarService,
     ) {
         this.query.subscribe((filter) => {
             this.filter = filter;
@@ -75,7 +77,7 @@ export class ImageService {
             const data = changes.payload.data() as Image;
             data.id = changes.payload.id;
             return data;
-        });
+        }).catch(this.errorHandler);
 
         return this.image;
     }
@@ -105,6 +107,12 @@ export class ImageService {
         const imageDoc = this.afs.doc<Image>(`images/${this.userId}/album/${id}`);
 
         return imageDoc.delete();
+    }
+
+    private errorHandler(error:any){
+        console.log('error: ',error);
+        this.snackBar.open('toast.serverResponse.' + error.code, 'toast.close');
+        return Observable.of(error);
     }
 
 }
