@@ -8,7 +8,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef, DoCheck} from '@angula
 export class ImageElementComponent implements OnInit, DoCheck {
 
     @Input() image;
-    @ViewChild('patientDDL') patientDDL: ElementRef;
+    @ViewChild('myLazyImg') myLazyImg: ElementRef;
 
     constructor() {}
 
@@ -18,11 +18,11 @@ export class ImageElementComponent implements OnInit, DoCheck {
 
 
     ngDoCheck() {
-        if (this.patientDDL) {
+        if (this.myLazyImg) {
 
-            if (this.patientDDL.nativeElement.classList.contains('ng-lazyloaded')) {
+            if (this.myLazyImg.nativeElement.classList.contains('ng-lazyloaded')) {
                 console.log('si', );
-                this.patientDDL.nativeElement.classList.remove("loading-image");
+                this.myLazyImg.nativeElement.classList.remove("loading-image");
 
             }
         }

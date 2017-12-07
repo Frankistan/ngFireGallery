@@ -1,10 +1,10 @@
-<mat-grid-list *ngIf="!(coreSrv.displaySpinner|async)" [cols]="cols" [rowHeight]="rowHeight" gutterSize="4px" [ngStyle]="{'display': display}">
-    <mat-grid-tile *ngFor="let image of images | filterBy: search | orderBy: sortBy: order">
+<mat-grid-list *ngIf="!(coreSrv.displaySpinner|async)" [cols]="cols" [rowHeight]="rowHeight" gutterSize="4px" [ngStyle]="{'display': totalImages ? 'flex':'none'}">
+    <mat-grid-tile *ngFor="let image of images$ |async | filterBy: search | orderBy: sortBy: order" lazy-load-images>
         <app-image-element [image]="image"></app-image-element>
     </mat-grid-tile>
 </mat-grid-list>
 
-<app-empty-gallery *ngIf="!totalImages && !(coreSrv.displaySpinner|async)"></app-empty-gallery>
+<app-empty-gallery [ngStyle]="{'display': totalImages ? 'none':'block'}" *ngIf="!(coreSrv.displaySpinner|async)"></app-empty-gallery>
 
 <button [ngStyle]="{'display': (coreSrv.scrolling|async)=='up' ? 'block':'none'}" mat-fab class="md-fab-bottom-right" routerLink="/upload">
     <mat-icon aria-label="subir imagen">add</mat-icon>

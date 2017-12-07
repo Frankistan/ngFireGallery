@@ -14,13 +14,12 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
     styleUrls: ['./image-list.component.css']
 })
 export class ImageListComponent implements OnInit, OnDestroy {
-    images: Image[];
+    images$: Observable<Image[]>;
     cols: number = 3;
     rowHeight: string = '240px';
     watcher: Subscription;
     subscription: Subscription;
     totalImages: boolean;
-    display = "flex";
 
     search: any = { name: '' };
     sortBy: BehaviorSubject<{}> = new BehaviorSubject({ sortBy: 'createdAt', order: '' });
@@ -31,7 +30,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
         public media: ObservableMedia,
         private router: Router,
         private route: ActivatedRoute,
-        public coreSrv:CoreService,
+        public coreSrv: CoreService,
     ) {
 
         let w = window,
@@ -88,18 +87,10 @@ export class ImageListComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.display = "flex";
         this.coreSrv.displaySpinner.next(true);
-
+        this.images$ = this.imageService.list();
         this.subscription = this.imageService.list().subscribe(images => {
-            this.images =images;
             this.totalImages = images.length > 0;
-            if (this.totalImages) {
-                this.display = "flex";
-            }
-            else {
-                this.display = "none";
-            }
             this.coreSrv.displaySpinner.next(false);
         });
     }

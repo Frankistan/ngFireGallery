@@ -13,7 +13,7 @@ import { OrderModule } from 'ngx-order-pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RoutingModule } from './modules/routing.module';
 import { ScrollTrackerModule } from '@nicky-lenaers/ngx-scroll-tracker';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 import { AppComponent } from './app.component';
 /* GUARDS */
 import { AuthGuard } from './guards/auth.guard';
@@ -92,7 +92,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         ReactiveFormsModule,
         RoutingModule,
         ScrollTrackerModule.forRoot(),
-        LazyLoadImageModule,
+        LazyLoadImagesModule,
         // PipesModule,
     ],
     entryComponents: [
