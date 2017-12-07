@@ -4,6 +4,6 @@
             <mat-card-title>{{ image.name }}</mat-card-title>
         </mat-card-header>
         <!-- <img #{{image.id}} mat-card-image [src]="image.url" alt="image"> -->
-        <img mat-card-image class="loading-image" [lazyLoad]="image.url">
+        <img #patientDDL mat-card-image class="loading-image" [lazyLoad]="image.url">
     </mat-card>
 </a>
