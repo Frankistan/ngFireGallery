@@ -20,7 +20,6 @@ export class ImageListComponent implements OnInit, OnDestroy {
     watcher: Subscription;
     subscription: Subscription;
     totalImages: boolean;
-    // showSpinner: boolean = true;
     display = "flex";
 
     search: any = { name: '' };

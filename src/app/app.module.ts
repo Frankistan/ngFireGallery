@@ -13,6 +13,7 @@ import { OrderModule } from 'ngx-order-pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RoutingModule } from './modules/routing.module';
 import { ScrollTrackerModule } from '@nicky-lenaers/ngx-scroll-tracker';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { AppComponent } from './app.component';
 /* GUARDS */
 import { AuthGuard } from './guards/auth.guard';
@@ -29,6 +30,7 @@ import { UserService } from './shared/user.service';
 import { DeleteImageDialogComponent } from './dialogs/delete-image-dialog/delete-image-dialog.component';
 import { EmptyGalleryComponent } from './gallery/empty-gallery/empty-gallery.component';
 import { ImageDetailComponent } from './gallery/image-detail/image-detail.component';
+import { ImageElementComponent } from './gallery/image-list/image-element/image-element.component';
 import { ImageListComponent } from './gallery/image-list/image-list.component';
 import { ImageUploadComponent } from './gallery/image-upload/image-upload.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -72,6 +74,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         SortByComponent,
         SpinnerComponent,
         WelcomeComponent,
+        ImageElementComponent,
     ],
     imports: [
         BrowserAnimationsModule,
@@ -89,6 +92,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         ReactiveFormsModule,
         RoutingModule,
         ScrollTrackerModule.forRoot(),
+        LazyLoadImageModule,
         // PipesModule,
     ],
     entryComponents: [

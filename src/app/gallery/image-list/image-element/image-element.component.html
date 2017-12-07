@@ -1,0 +1,9 @@
+<a [routerLink]="['/images', image.id]">
+    <mat-card class="image-list-card">
+        <mat-card-header>
+            <mat-card-title>{{ image.name }}</mat-card-title>
+        </mat-card-header>
+        <!-- <img #{{image.id}} mat-card-image [src]="image.url" alt="image"> -->
+        <img mat-card-image [src]="image.url" class="loading-image" [lazyLoad]="image.url">
+    </mat-card>
+</a>

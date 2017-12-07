@@ -1,13 +1,6 @@
 <mat-grid-list *ngIf="!(coreSrv.displaySpinner|async)" [cols]="cols" [rowHeight]="rowHeight" gutterSize="4px" [ngStyle]="{'display': display}">
     <mat-grid-tile *ngFor="let image of images | filterBy: search | orderBy: sortBy: order">
-        <a [routerLink]="['/images', image.id]">
-            <mat-card class="image-list-card">
-                <mat-card-header>
-                    <mat-card-title>{{ image.name }}</mat-card-title>
-                </mat-card-header>
-                <img mat-card-image [src]="image.url" alt="image">
-            </mat-card>
-        </a>
+        <app-image-element [image]="image"></app-image-element>
     </mat-grid-tile>
 </mat-grid-list>
 
