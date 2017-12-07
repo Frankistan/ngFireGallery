@@ -1,6 +1,11 @@
 .loading-image {
     background-image: url('../../../../assets/img/green-spinner.gif');
-    margin: 0 auto;
-    display: flex;
     background-repeat: no-repeat;
+    background-size: 64px 64px;
+    background-position: top;
+    min-height: 64px;
+}
+
+a {
+    text-decoration: none !important;
 }
