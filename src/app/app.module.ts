@@ -7,13 +7,16 @@ import { CustomMaterialModule } from './modules/custom-material.module';
 import { CustomRecaptchaModule } from './modules/custom-recaptcha.module';
 import { CustomTranslationModule } from './modules/custom-translation.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+// import { ImageCropperModule } from 'ngx-image-cropper';
+import { ImageCropperModule } from 'ng2-img-cropper';
+
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 import { MomentModule } from 'angular2-moment';
 import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 import { OrderModule } from 'ngx-order-pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RoutingModule } from './modules/routing.module';
 import { ScrollTrackerModule } from '@nicky-lenaers/ngx-scroll-tracker';
-import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 import { AppComponent } from './app.component';
 /* GUARDS */
 import { AuthGuard } from './guards/auth.guard';
@@ -45,6 +48,7 @@ import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SortByComponent } from './sort-by/sort-by.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { UploadProfileImgDialogComponent } from './dialogs/upload-profile-img-dialog/upload-profile-img-dialog.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
@@ -75,6 +79,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         SpinnerComponent,
         WelcomeComponent,
         ImageElementComponent,
+        UploadProfileImgDialogComponent,
     ],
     imports: [
         BrowserAnimationsModule,
@@ -86,17 +91,19 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         CustomTranslationModule,
         FlexLayoutModule,
         FormsModule,
+        ImageCropperModule,
+        LazyLoadImagesModule,
         MomentModule,
         Ng2FilterPipeModule,
         OrderModule,
         ReactiveFormsModule,
         RoutingModule,
         ScrollTrackerModule.forRoot(),
-        LazyLoadImagesModule,
         // PipesModule,
     ],
     entryComponents: [
-        DeleteImageDialogComponent
+        DeleteImageDialogComponent,
+        UploadProfileImgDialogComponent
     ],
     providers: [
         AuthGuard,

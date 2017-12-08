@@ -9,6 +9,8 @@ import { UserService } from '../../shared/user.service';
 import * as moment from 'moment';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs/Subscription';
+import { MatDialog } from '@angular/material';
+import { UploadProfileImgDialogComponent } from '../../dialogs/upload-profile-img-dialog/upload-profile-img-dialog.component';
 
 @Component({
     selector: 'app-profile-details',
@@ -28,6 +30,7 @@ export class ProfileDetailsComponent {
         private snackBar: SnackbarService,
         private userService: UserService,
         public translate: TranslateService,
+        private dialog: MatDialog,
     ) {
         auth.user.subscribe((user) => {
             this.userInfo = user;
@@ -69,6 +72,22 @@ export class ProfileDetailsComponent {
         };
 
         this.userService.update(data,inputValue.password);
+    }
+
+    openDeleteDialog(): void {
+        let dialogRef = this.dialog.open(UploadProfileImgDialogComponent, {
+            // width: '250px',
+            data: { name: 'hola' }
+        });
+
+        // resultado de las acciones en el Dialog
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                // this.deleteImage(image);
+                console.log('actualizo la imagen',);
+
+            }
+        });
     }
 
 }
