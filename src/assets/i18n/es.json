@@ -79,7 +79,8 @@
             "subtitle": "La imagen se eliminará de forma permanente. Esta acción no se puede deshacer."
         },
         "avatar": {
-            "title": "Añade una imagen de perfil"
+            "title": "Añade una imagen de perfil",
+            "subtitle": "Recorta la imagen"
         },
         "action": {
             "confirm": "Borrar",

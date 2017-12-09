@@ -81,7 +81,8 @@
             "subtitle": "This will permanently delete all data. After you delete this, it can't be recovered."
         },
         "avatar": {
-            "title": "Add a new profile image"
+            "title": "Add a new profile image",
+            "subtitle": "Crop the image"
         },
         "action": {
             "confirm": "Delete",

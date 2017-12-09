@@ -111,7 +111,7 @@ export class ProfileEditorComponent {
             <mat-dialog-content>
                 <div>
                     <h3 style="margin: 1rem 0; ">
-                        Recorta la imagen
+                        {{ 'dialog.avatar.subtitle' | translate }}
                             <input id="custom-input" type="file" (change)="fileChangeListener($event)">
                     </h3>
                     <img-cropper #cropper [image]="inputData" [settings]="cropperSettings"></img-cropper>
@@ -122,8 +122,8 @@ export class ProfileEditorComponent {
                 </div>
             </mat-dialog-content>
             <mat-dialog-actions align="end">
-                <button mat-raised-button (click)="onNoClick()" tabindex="-1" color="warn">Cancel</button>
-                <button mat-button [mat-dialog-close]="data" tabindex="2">Upload</button>
+                <button mat-raised-button (click)="onNoClick()" tabindex="-1" color="warn">{{ 'dialog.action.cancel' | translate }} </button>
+                <button mat-button [mat-dialog-close]="data" tabindex="2">{{ 'dialog.action.upload' | translate }} </button>
             </mat-dialog-actions>
         </div>
             `,
