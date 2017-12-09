@@ -1,16 +1,16 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, AfterViewInit, Renderer } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
-import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
-import { Subscription } from 'rxjs/Subscription';
-import * as moment from 'moment';
-import { User } from '../../models/user';
-import { Upload } from '../../models/upload';
 import { AuthService } from '../../shared/auth.service';
 import { UserService } from '../../shared/user.service';
 import { UploadImageService } from '../../shared/upload-image.service';
 import { PasswordValidator } from '../../validators/match-password';
+import { Upload } from '../../models/upload';
+import { User } from '../../models/user';
+import { Subscription } from 'rxjs/Subscription';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-profile-editor',
@@ -98,13 +98,10 @@ export class ProfileEditorComponent {
 
 }
 
-
-
-
 @Component({
     selector: 'upload-avatar-dialog',
     template: `
-        <div fxLayout="column">
+        <div fxLayout="column" fxFlex="100" fxFlex.sm="65" fxFlex.gt-sm="50">
             <h2 mat-dialog-title style="margin:0; "> {{ 'dialog.avatar.title' | translate }} </h2>
             <mat-dialog-content>
                 <div>
@@ -115,7 +112,7 @@ export class ProfileEditorComponent {
                     <img-cropper #cropper [image]="inputData" [settings]="cropperSettings"></img-cropper>
                     <br>
                     <span class="result rounded" *ngIf="inputData.image">
-                        <img [src]="inputData.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+                        <img [src]="inputData.image" />
                     </span>
                 </div>
             </mat-dialog-content>
@@ -126,7 +123,7 @@ export class ProfileEditorComponent {
         </div>
             `,
 })
-export class UploadAvatarDialog implements OnInit {
+export class UploadAvatarDialog implements OnInit , AfterViewInit{
 
     texto: string = "hola que tal";
     file: File = null;
@@ -135,18 +132,19 @@ export class UploadAvatarDialog implements OnInit {
     @ViewChild('cropper', undefined) cropper: ImageCropperComponent;
 
     constructor(
+        private renderer:Renderer,
         public dialogRef: MatDialogRef<UploadAvatarDialog>,
         @Inject(MAT_DIALOG_DATA) public data: any) {
         this.cropperSettings = new CropperSettings();
         this.cropperSettings.width = 200;
         this.cropperSettings.height = 200;
-        this.cropperSettings.keepAspect = false;
+        this.cropperSettings.keepAspect = true;
 
         this.cropperSettings.croppedWidth = 200;
         this.cropperSettings.croppedHeight = 200;
 
-        this.cropperSettings.canvasWidth = 500;
-        this.cropperSettings.canvasHeight = 300;
+        this.cropperSettings.canvasWidth = 300;
+        this.cropperSettings.canvasHeight = 220;
 
         this.cropperSettings.minWidth = 100;
         this.cropperSettings.minHeight = 100;
@@ -203,6 +201,17 @@ export class UploadAvatarDialog implements OnInit {
             .then((res) => { return res.arrayBuffer(); })
             .then((buf) => { return new File([buf], filename, { type: mimeType }); })
         );
+    }
+
+    ngAfterViewInit() {
+        // FIX para que el canvas tenga el width al 100%
+        // ya que es un elemento creado, no se encuentra en
+        // el template del Dialog
+        let canvas = document.querySelector('canvas');
+        this.renderer.setElementStyle(canvas,'width','100%');
+
+        this.cropperSettings.canvasWidth =  canvas.width;
+        this.cropperSettings.canvasHeight =  canvas.height;
     }
 
 }

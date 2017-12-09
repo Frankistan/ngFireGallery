@@ -86,9 +86,6 @@ export class ImageDetailComponent implements OnInit {
 
 }
 
-
-
-
 @Component({
     selector: 'delete-image-dialog',
     template: `
@@ -114,15 +111,11 @@ export class ImageDetailComponent implements OnInit {
             </div>
             `,
 })
-export class DeleteImageDialog implements OnInit {
+export class DeleteImageDialog {
 
     constructor(
         public dialogRef: MatDialogRef<DeleteImageDialog>,
         @Inject(MAT_DIALOG_DATA) public data: any) {
-
-    }
-
-    ngOnInit() {
 
     }
 

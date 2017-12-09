@@ -81,6 +81,11 @@ mat-card-actions button {
     text-transform: uppercase;
 }
 
+mat-dialog-container,
+.mat-dialog-container {
+    max-width: calc(100vw - 1rem) !important;
+}
+
 .warning-toolbar {
     background-color: #fbe9e7 !important;
     font-size: 14px;
