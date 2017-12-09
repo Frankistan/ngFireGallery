@@ -7,9 +7,7 @@ import { CustomMaterialModule } from './modules/custom-material.module';
 import { CustomRecaptchaModule } from './modules/custom-recaptcha.module';
 import { CustomTranslationModule } from './modules/custom-translation.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageCropperModule } from 'ng2-img-cropper';
-
 import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 import { MomentModule } from 'angular2-moment';
 import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
@@ -37,7 +35,7 @@ import { ImageElementComponent } from './gallery/image-list/image-element/image-
 import { ImageListComponent } from './gallery/image-list/image-list.component';
 import { ImageUploadComponent } from './gallery/image-upload/image-upload.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ProfileDetailsComponent } from './user/profile-details/profile-details.component';
+import { ProfileEditorComponent, UploadAvatarDialog} from './user/profile-editor/profile-editor.component';
 import { ProfileInfoComponent } from './user/profile-info/profile-info.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { ScrollToTopFabComponent } from './scroll-to-top-fab/scroll-to-top-fab.component';
@@ -48,11 +46,9 @@ import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SortByComponent } from './sort-by/sort-by.component';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { UploadProfileImgDialogComponent } from './dialogs/upload-profile-img-dialog/upload-profile-img-dialog.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
-
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
 
@@ -66,7 +62,6 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         ImageListComponent,
         ImageUploadComponent,
         LoginComponent,
-        ProfileDetailsComponent,
         ProfileInfoComponent,
         ResetPasswordComponent,
         ScrollToTopFabComponent,
@@ -79,7 +74,9 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         SpinnerComponent,
         WelcomeComponent,
         ImageElementComponent,
-        UploadProfileImgDialogComponent,
+        ProfileEditorComponent,
+        UploadAvatarDialog,
+        ProfileEditorComponent,
     ],
     imports: [
         BrowserAnimationsModule,
@@ -103,7 +100,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
     ],
     entryComponents: [
         DeleteImageDialogComponent,
-        UploadProfileImgDialogComponent
+        UploadAvatarDialog
     ],
     providers: [
         AuthGuard,

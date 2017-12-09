@@ -45,7 +45,7 @@ export class UserService {
             });
 
             this.userRef.set(user)
-                // .then(success => { this.snackBar.open('toast.profile','toast.close');  }
+                .then(success => { this.snackBar.open('toast.profile','toast.close');  })
                 .catch(error => { this.snackBar.open('toast.serverResponse.' + error.code, 'toast.close'); });
         }
     }

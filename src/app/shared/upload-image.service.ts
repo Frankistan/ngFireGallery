@@ -5,10 +5,12 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { SnackbarService } from './snackbar.service';
 import { Upload } from '../models/upload';
 import { Image } from '../models/image';
+import { User } from '../models/user';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 import * as firebase from 'firebase';
 import 'rxjs/add/operator/map';
+import { UserService } from './user.service';
 
 @Injectable()
 export class UploadImageService {
@@ -20,6 +22,7 @@ export class UploadImageService {
         private afs: AngularFirestore,
         private snackbar: SnackbarService,
         private imageService: ImageService,
+        private userSrv:UserService,
     ) {
         this.afAuth.authState.subscribe(user => {
             if (user != undefined && user != null)
@@ -61,5 +64,29 @@ export class UploadImageService {
 
     get timestamp() {
         return firebase.firestore.FieldValue.serverTimestamp();
+    }
+
+    uploadAvatar(upload: Upload,userInfo:User) {
+        console.log('paso por UploadImageService.uploadAvatar', upload);
+        const storageRef = firebase.storage().ref();
+
+        const uploadTask = storageRef.child(`uploads/avatar/${this.userId}`).put(upload.file);
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            (snapshot) => {
+                // upload in progress
+                // upload.progress = 0;
+                // upload.progress = Math.round(((uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100) * 100) / 100;
+            },
+            (error) => {
+                // upload failed
+                this.snackbar.open(error.message, 'toast.close', 3000);
+            },
+            () => {
+                // upload success
+                userInfo.photoURL = uploadTask.snapshot.downloadURL;
+                this.userSrv.update(userInfo);
+            }
+        );
     }
 }

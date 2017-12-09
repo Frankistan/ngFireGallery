@@ -78,9 +78,15 @@
     "dialog": {
         "delete_image": {
             "title": "Would you delete this Image?",
-            "subtitle": "This will permanently delete all data. After you delete this, it can't be recovered.",
+            "subtitle": "This will permanently delete all data. After you delete this, it can't be recovered."
+        },
+        "avatar": {
+            "title": "Add a new profile image"
+        },
+        "action": {
             "confirm": "Delete",
-            "cancel": "Cancel"
+            "cancel": "Cancel",
+            "upload": "Upload"
         }
     },
     "main": {

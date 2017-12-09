@@ -76,9 +76,15 @@
     "dialog": {
         "delete_image": {
             "title": "¿Deseas borrar la imagen?",
-            "subtitle": "La imagen se eliminará de forma permanente. Esta acción no se puede deshacer.",
+            "subtitle": "La imagen se eliminará de forma permanente. Esta acción no se puede deshacer."
+        },
+        "avatar": {
+            "title": "Añade una imagen de perfil"
+        },
+        "action": {
             "confirm": "Borrar",
-            "cancel": "Cancelar"
+            "cancel": "Cancelar",
+            "upload": "Subir"
         }
     },
     "main": {

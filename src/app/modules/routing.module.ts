@@ -6,11 +6,11 @@ import { ImageDetailComponent } from './../gallery/image-detail/image-detail.com
 import { ImageListComponent } from './../gallery/image-list/image-list.component';
 import { ImageUploadComponent } from './../gallery/image-upload/image-upload.component';
 import { LoginComponent } from '../auth/login/login.component';
-import { ProfileDetailsComponent } from './../user/profile-details/profile-details.component';
 import { SignupComponent } from './../auth/signup/signup.component';
 import { WelcomeComponent } from './../welcome/welcome.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { LoggedInGuard } from '../guards/logged-in.guard';
+import { ProfileEditorComponent } from '../user/profile-editor/profile-editor.component';
 
 const routes: Routes = [
     {
@@ -93,7 +93,7 @@ const routes: Routes = [
         }
     },
     {
-        path: 'user-profile', component: ProfileDetailsComponent, canActivate: [AuthGuard],
+        path: 'user-profile', component: ProfileEditorComponent, canActivate: [AuthGuard],
         data: {
             title: 'profile',
             animation: {

@@ -5,7 +5,7 @@
     <ng-template #email>
         <mat-card fxLayout="column" fxFlex="100" fxFlex.sm="80" fxFlex.gt-sm="40" *ngIf="auth.user | async; let user;">
             <mat-card-header>
-                <div mat-card-avatar (click)="openDeleteDialog()" class="card-header-image" [ngStyle]="{'background-image': 'url(' + user.photoURL + ')'}"></div>
+                <div mat-card-avatar (click)="openDialog()" class="card-header-image" [ngStyle]="{'background-image': 'url(' + user.photoURL + ')'}"></div>
                 <mat-card-title>{{ user.displayName }}</mat-card-title>
                 <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
                 <mat-card-subtitle class="lastLogin">
