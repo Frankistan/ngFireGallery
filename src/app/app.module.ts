@@ -28,9 +28,8 @@ import { SnackbarService } from './shared/snackbar.service';
 import { UploadImageService } from './shared/upload-image.service';
 import { UserService } from './shared/user.service';
 /* COMPONENTS */
-import { DeleteImageDialogComponent } from './dialogs/delete-image-dialog/delete-image-dialog.component';
 import { EmptyGalleryComponent } from './gallery/empty-gallery/empty-gallery.component';
-import { ImageDetailComponent } from './gallery/image-detail/image-detail.component';
+import { ImageDetailComponent, DeleteImageDialog } from './gallery/image-detail/image-detail.component';
 import { ImageElementComponent } from './gallery/image-list/image-element/image-element.component';
 import { ImageListComponent } from './gallery/image-list/image-list.component';
 import { ImageUploadComponent } from './gallery/image-upload/image-upload.component';
@@ -56,7 +55,6 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
     declarations: [
         AppComponent,
         AutofocusDirective,
-        DeleteImageDialogComponent,
         EmptyGalleryComponent,
         ImageDetailComponent,
         ImageListComponent,
@@ -77,6 +75,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         ProfileEditorComponent,
         UploadAvatarDialog,
         ProfileEditorComponent,
+        DeleteImageDialog,
     ],
     imports: [
         BrowserAnimationsModule,
@@ -99,8 +98,8 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         // PipesModule,
     ],
     entryComponents: [
-        DeleteImageDialogComponent,
-        UploadAvatarDialog
+        UploadAvatarDialog,
+        DeleteImageDialog
     ],
     providers: [
         AuthGuard,

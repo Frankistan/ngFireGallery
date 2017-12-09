@@ -17,7 +17,7 @@
                 <mat-icon [class.red-color]="image.liked == true">{{ image.liked ? 'favorite' : 'favorite_border'}}</mat-icon>
                 {{ 'image.favorite' | translate }}
             </button>
-            <button mat-button (click)="openDeleteDialog(image)">
+            <button mat-button (click)="openDialog(image)">
                 <mat-icon>delete</mat-icon>{{ 'image.delete' | translate }}
             </button>
         </mat-card-actions>

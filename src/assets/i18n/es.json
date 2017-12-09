@@ -83,7 +83,7 @@
             "subtitle": "Recorta la imagen"
         },
         "action": {
-            "confirm": "Borrar",
+            "delete": "Borrar",
             "cancel": "Cancelar",
             "upload": "Subir"
         }

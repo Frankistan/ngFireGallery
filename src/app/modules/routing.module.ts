@@ -1,16 +1,16 @@
-import { SettingsComponent } from './../settings/settings.component';
-import { ResetPasswordComponent } from './../auth/reset-password/reset-password.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { ImageDetailComponent } from './../gallery/image-detail/image-detail.component';
 import { ImageListComponent } from './../gallery/image-list/image-list.component';
 import { ImageUploadComponent } from './../gallery/image-upload/image-upload.component';
+import { LoggedInGuard } from '../guards/logged-in.guard';
 import { LoginComponent } from '../auth/login/login.component';
+import { ProfileEditorComponent } from '../user/profile-editor/profile-editor.component';
+import { ResetPasswordComponent } from './../auth/reset-password/reset-password.component';
+import { RouterModule, Routes } from '@angular/router';
+import { SettingsComponent } from './../settings/settings.component';
 import { SignupComponent } from './../auth/signup/signup.component';
 import { WelcomeComponent } from './../welcome/welcome.component';
-import { AuthGuard } from '../guards/auth.guard';
-import { LoggedInGuard } from '../guards/logged-in.guard';
-import { ProfileEditorComponent } from '../user/profile-editor/profile-editor.component';
 
 const routes: Routes = [
     {

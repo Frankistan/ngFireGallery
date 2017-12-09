@@ -26,8 +26,6 @@ export class ProfileEditorComponent {
 
     upload: Upload = null;
 
-    animal: string;
-    name: string;
     image: File = null;
 
     constructor(
@@ -88,7 +86,7 @@ export class ProfileEditorComponent {
     openDialog(): void {
         let dialogRef = this.dialog.open(UploadAvatarDialog, {
             // width: '250px',
-            data: { name: this.name, animal: this.animal, file: this.image }
+            data: { file: this.image }
         });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -104,7 +102,7 @@ export class ProfileEditorComponent {
 
 
 @Component({
-    selector: 'dialog-overview-example-dialog',
+    selector: 'upload-avatar-dialog',
     template: `
         <div fxLayout="column">
             <h2 mat-dialog-title style="margin:0; "> {{ 'dialog.avatar.title' | translate }} </h2>

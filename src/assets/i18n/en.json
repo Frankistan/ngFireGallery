@@ -85,7 +85,7 @@
             "subtitle": "Crop the image"
         },
         "action": {
-            "confirm": "Delete",
+            "delete": "Delete",
             "cancel": "Cancel",
             "upload": "Upload"
         }
