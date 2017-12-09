@@ -9,8 +9,11 @@
 
 .sidenav-toolbar {
     height: 108px !important;
-    background-color: #00BBD3;
-    background-image: url('../../../assets/img/landscape1.jpg');
+    /* background-color: #00BBD3; */
+    /* background-image: url('../../../assets/img/landscape1.jpg'); */
+    background-image: url('../../../assets/img/day1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .sidenav-toolbar a {
@@ -21,11 +24,11 @@
     color: inherit;
 }
 
-.mat-card-header {
+
+/* .mat-card-header {
     align-items: center;
     background-image: url('../../../assets/img/landscape1.jpg');
-    /* background-size: contain; */
-}
+} */
 
 .mat-card-title {
     font-size: 1rem;
