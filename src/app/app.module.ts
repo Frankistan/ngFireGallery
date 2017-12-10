@@ -48,6 +48,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
+import { SettingsService } from './shared/settings.service';
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
 
@@ -109,6 +110,7 @@ import { AutofocusDirective } from './shared/directives/autofocus.directive';
         LoggedInGuard,
         RecaptchaDynamicLanguageLoaderService,
         SnackbarService,
+        SettingsService,
         UploadImageService,
         UserService,
     ],

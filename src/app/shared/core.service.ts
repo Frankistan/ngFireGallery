@@ -8,6 +8,7 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 export class CoreService {
     currentPath: BehaviorSubject<string> = new BehaviorSubject("");
     darkTheme: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    language: BehaviorSubject<string> = new BehaviorSubject('es');
     displaySpinner: BehaviorSubject<boolean> = new BehaviorSubject(false);
     isSearching: BehaviorSubject<boolean> = new BehaviorSubject(false);
     scrolling: BehaviorSubject<string> = new BehaviorSubject("up");
@@ -24,6 +25,13 @@ export class CoreService {
             this.translate.get(this.titleTranslationKey).subscribe((res: string) => {
                 this.titleService.setTitle(res);
             });
+        });
+        this.language.subscribe(lang => {
+            if (!lang) return;
+            translate.use(lang).subscribe(() => {
+                return;
+            });
+
         });
 
         this.changeTitle();

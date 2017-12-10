@@ -34,6 +34,7 @@
         "reset_password": "Resetear Contraseña"
     },
     "toast": {
+        "settings_saved": "Ajustes guardados",
         "image": {
             "created": "Imagen subida correctamente!",
             "liked": "Añadida a tus favoritas",

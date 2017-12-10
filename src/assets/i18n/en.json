@@ -36,6 +36,7 @@
     },
 
     "toast": {
+        "settings_saved": "Settings saved",
         "image": {
             "created": "Image uploaded correctly!",
             "liked": "Added to favorites",

@@ -2,6 +2,7 @@ import { CoreService } from './../shared/core.service';
 import { Component } from '@angular/core';
 import { MatSlideToggleChange, MatSelectChange } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import { SettingsService } from '../shared/settings.service';
 
 @Component({
     selector: 'app-settings',
@@ -9,8 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent {
-    checked = false;
-    selectedLanguage: string = localStorage.getItem('NGX_TRANSLATE');
+    checked = JSON.parse(localStorage.getItem('settings')).isDark;
+    selectedLanguage: string = JSON.parse(localStorage.getItem('settings')).language;
 
     languages = [
         { value: 'es', viewValue: 'Español' },
@@ -20,26 +21,33 @@ export class SettingsComponent {
     constructor(
         private coreSrv:CoreService,
         private translate: TranslateService,
+        private settingsService:SettingsService,
     ) {
+        coreSrv.darkTheme.subscribe( isDark =>{
+            this.checked =  isDark ;
+        });
 
-        this.checked =  localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')).isDark : false;
+        coreSrv.language.subscribe(lang => {
+            this.selectedLanguage = lang;
+        });
     }
 
     switchTheme(event: MatSlideToggleChange) {
-        this.coreSrv.darkTheme.next(event.checked);
         let settings = {
-            "isDark": event.checked
+            isDark: event.checked
         }
-        localStorage.setItem('settings', JSON.stringify(settings));
+
+        this.coreSrv.darkTheme.next(event.checked);
+        this.settingsService.saveSettings(settings);
     }
 
     switchLanguage(event: MatSelectChange) {
-        // console.log('lang: ', event.value);
-        let language = event.value;
+        let settings = {
+            language: event.value
+        };
 
-        this.translate.use(language).subscribe(() => {
-            localStorage.setItem('NGX_TRANSLATE', language);
-        });
+        this.coreSrv.language.next(event.value);
+        this.settingsService.saveSettings(settings);
     }
 
 }
