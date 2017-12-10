@@ -11,6 +11,7 @@ import { Upload } from '../../models/upload';
 import { User } from '../../models/user';
 import { Subscription } from 'rxjs/Subscription';
 import * as moment from 'moment';
+import { LocationService } from '../../shared/location.service';
 
 @Component({
     selector: 'app-profile-editor',
@@ -34,7 +35,9 @@ export class ProfileEditorComponent {
         private formBuilder: FormBuilder,
         public translate: TranslateService,
         private userService: UserService,
-        private uploadImageSrv: UploadImageService, ) {
+        private uploadImageSrv: UploadImageService,
+        public geoPos: LocationService,
+    ) {
         auth.user.subscribe((user) => {
             this.userInfo = user;
             if (user && user != undefined) {
@@ -57,6 +60,10 @@ export class ProfileEditorComponent {
         // FUNCIONA CON this.lastUpdated = new Date();
         this.subscription = this.translate.onLangChange.map(event => { return event.lang; }).subscribe((language) => {
             moment.locale(language);
+        });
+
+        this.geoPos.getAddress.subscribe((address) => {
+            console.log('direccion: ', address);
         });
     }
 
@@ -127,7 +134,7 @@ export class UploadAvatarDialog implements OnInit , AfterViewInit{
 
     texto: string = "hola que tal";
     file: File = null;
-    inputData: any;
+    inputData: any = {};
     cropperSettings: CropperSettings;
     @ViewChild('cropper', undefined) cropper: ImageCropperComponent;
 
@@ -135,6 +142,27 @@ export class UploadAvatarDialog implements OnInit , AfterViewInit{
         private renderer:Renderer,
         public dialogRef: MatDialogRef<UploadAvatarDialog>,
         @Inject(MAT_DIALOG_DATA) public data: any) {
+
+        this.loadCropperSettings();
+    }
+
+    ngOnInit() {
+        // Pista: https://stackoverflow.com/questions/39876932/angular-2-image-uploader-with-cropper
+        this.data.animal = "cats";
+        this.data.name = "Frantxu";
+        var that = this;
+        this.cropper.onCrop.subscribe(event => {
+
+            this.urltoFile(this.inputData.image, this.file.name, 'image/jpeg')
+                .then(function (file) {
+                    if (file) {
+                        that.data.file = file;
+                    }
+                });
+        });
+    }
+
+    private loadCropperSettings(){
         this.cropperSettings = new CropperSettings();
         this.cropperSettings.width = 200;
         this.cropperSettings.height = 200;
@@ -156,23 +184,7 @@ export class UploadAvatarDialog implements OnInit , AfterViewInit{
         this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
         this.cropperSettings.noFileInput = true;
 
-        this.inputData = {};
-    }
-
-    ngOnInit() {
-        // Pista: https://stackoverflow.com/questions/39876932/angular-2-image-uploader-with-cropper
-        this.data.animal = "cats";
-        this.data.name = "Frantxu";
-        var that = this;
-        this.cropper.onCrop.subscribe(event => {
-
-            this.urltoFile(this.inputData.image, this.file.name, 'image/jpeg')
-                .then(function (file) {
-                    if (file) {
-                        that.data.file = file;
-                    }
-                });
-        });
+        // this.inputData = {};
     }
 
     onNoClick(): void {

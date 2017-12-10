@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -49,6 +50,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 /* DIRECTIVES */
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
 import { SettingsService } from './shared/settings.service';
+import { LocationService } from './shared/location.service';
 /* PIPES */
 // import { PipesModule } from './modules/pipes.module';
 
@@ -95,6 +97,7 @@ import { SettingsService } from './shared/settings.service';
         OrderModule,
         ReactiveFormsModule,
         RoutingModule,
+        HttpClientModule,
         ScrollTrackerModule.forRoot(),
         // PipesModule,
     ],
@@ -112,6 +115,7 @@ import { SettingsService } from './shared/settings.service';
         SnackbarService,
         SettingsService,
         UploadImageService,
+        LocationService,
         UserService,
     ],
     bootstrap: [AppComponent]

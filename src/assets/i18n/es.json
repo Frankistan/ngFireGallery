@@ -146,6 +146,8 @@
         "subtitle": "Pulsa el botón de la esquina inferior para subir alguna"
     },
     "profile": {
+        "location": "Ubicación",
+        "location_not_available": "Ubicación no disponible",
         "lastLogin": "Última conexión",
         "input": {
             "new_password": "Nueva contraseña",

@@ -52,7 +52,6 @@ export class SettingsService {
 
         localStorage.setItem('settings', JSON.stringify(settings));
 
-        //TODO: save settings to Firebase
         this.user.settings = settings;
         this.userRef.set(this.user)
             .then(success => { this.snackBar.open('toast.settings_saved', 'toast.close'); })

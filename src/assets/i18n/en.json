@@ -148,6 +148,8 @@
         "subtitle": "Hit the bottom right button to upload some"
     },
     "profile": {
+        "location": "Location",
+        "location_not_available": "Location not available",
         "lastLogin": "Last login",
         "input": {
             "new_password": "New password",
