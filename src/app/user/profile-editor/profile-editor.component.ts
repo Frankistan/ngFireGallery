@@ -62,9 +62,7 @@ export class ProfileEditorComponent {
             moment.locale(language);
         });
 
-        this.geoPos.getAddress.subscribe((address) => {
-            console.log('direccion: ', address);
-        });
+
     }
 
     togglePasswordFields() {
@@ -97,7 +95,6 @@ export class ProfileEditorComponent {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            // console.log('The dialog was closed');
             if (result && result.file)
                 this.uploadAvatar(result.file);
         });

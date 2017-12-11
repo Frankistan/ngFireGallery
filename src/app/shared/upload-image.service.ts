@@ -67,7 +67,6 @@ export class UploadImageService {
     }
 
     uploadAvatar(upload: Upload,userInfo:User) {
-        console.log('paso por UploadImageService.uploadAvatar', upload);
         const storageRef = firebase.storage().ref();
 
         const uploadTask = storageRef.child(`uploads/avatar/${this.userId}`).put(upload.file);

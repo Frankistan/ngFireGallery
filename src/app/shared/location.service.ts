@@ -21,7 +21,7 @@ export class LocationService {
             window.navigator.geolocation.getCurrentPosition(
                 position => {
                     this.geolocationPosition = position,
-                        this._http.get(`http://mas.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&sensor=true`).subscribe(res => {
+                        this._http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&sensor=false`).subscribe(res => {
                             if (!res) return;
                             let data: any = res;
                             let address = data.results[1].formatted_address;
@@ -40,11 +40,11 @@ export class LocationService {
                             console.log('Timeout');
                             break;
                     }
+                    this.address$.next("profile.location_not_available");
                 }
             );
         };
     }
-
 
     get getAddress() {
         return this.address$.asObservable();
